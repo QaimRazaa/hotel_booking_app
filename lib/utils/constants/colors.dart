@@ -35,7 +35,7 @@ class AppColors{
   static Color warning = Color(0xFFf57c00);
   static Color info = Color(0xFF1976d2);
 
-  static Color black = Color(0xFF232323);
+  static Color black = Colors.black;
   static Color darkerGrey = Color(0xFF4f4f4f);
   static Color darkGrey = Color(0xFF939393);
   static Color grey = Color(0xFFe0e0e0);
