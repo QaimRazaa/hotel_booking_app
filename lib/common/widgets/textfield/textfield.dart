@@ -6,13 +6,15 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final IconData? prefixIcon;
   final bool obscureText;
-  final bool underLine; // controls underline
+  final bool underLine;
   final TextEditingController? controller;
   final int? maxLength;
   final TextAlign textAlign;
   final TextInputType? keyboardType;
   final double fontSize;
   final FontWeight fontWeight;
+  final Color textColor;
+  final Color hintTextColor; // ✅ new reusable color for hint text
 
   const CustomTextField({
     Key? key,
@@ -26,6 +28,8 @@ class CustomTextField extends StatelessWidget {
     this.keyboardType,
     this.fontSize = 16,
     this.fontWeight = FontWeight.normal,
+    this.textColor = Colors.black,
+    this.hintTextColor = Colors.grey, // ✅ default same as before
   }) : super(key: key);
 
   @override
@@ -41,29 +45,31 @@ class CustomTextField extends StatelessWidget {
         style: GoogleFonts.roboto(
           fontSize: fontSize,
           fontWeight: fontWeight,
-          color: Colors.black,
+          color: textColor,
         ),
         decoration: InputDecoration(
           counterText: '',
-          prefixIcon: prefixIcon != null ? Icon(prefixIcon, color: AppColors.primary) : null,
+          prefixIcon: prefixIcon != null
+              ? Icon(prefixIcon, color: AppColors.primary)
+              : null,
           hintText: hintText,
           hintStyle: GoogleFonts.roboto(
             fontSize: fontSize,
             fontWeight: fontWeight,
-            color: Colors.grey,
+            color: hintTextColor, // ✅ applied here
           ),
           border: underLine
-              ? UnderlineInputBorder(
+              ? const UnderlineInputBorder(
             borderSide: BorderSide(color: Color(0xFFC4C4C4), width: 1),
           )
               : InputBorder.none,
           enabledBorder: underLine
-              ? UnderlineInputBorder(
+              ? const UnderlineInputBorder(
             borderSide: BorderSide(color: Color(0xFFC4C4C4), width: 1),
           )
               : InputBorder.none,
           focusedBorder: underLine
-              ? UnderlineInputBorder(
+              ? const UnderlineInputBorder(
             borderSide: BorderSide(color: Color(0xFF000000), width: 1),
           )
               : InputBorder.none,

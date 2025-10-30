@@ -60,4 +60,12 @@ class AppColors{
       Color(0xff00FF94),
     ],
   );
+  static  Gradient linerGradient3 =LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      Color(0xff0090FF).withOpacity(0.7),
+      Color(0xff00FF94).withOpacity(0.7),
+    ],
+  );
 }
