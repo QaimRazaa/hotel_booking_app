@@ -1,16 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/common/widgets/elevatedbutton/elevated_button.dart';
 import 'package:hotel_booking_app/common/widgets/textfield/textfield.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/amenity_row.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/appbar.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/navbar.dart';
+import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/places_and_hotels.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/tabbar.dart';
-import 'package:hotel_booking_app/navigation_bar.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:hotel_booking_app/utils/constants/images.dart';
-import 'package:iconsax/iconsax.dart';
 
 class RoomsScreen extends StatefulWidget {
   const RoomsScreen({super.key});
@@ -61,9 +59,9 @@ class _RoomsScreenState extends State<RoomsScreen> {
                         prefixIcon: Icons.people_outline,
                         hintTextColor: AppColors.black,
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 25),
                       AmenityRow(),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 25),
                     SizedBox(
                       width: double.infinity,
                       child: CustomElevatedButton(
@@ -74,20 +72,20 @@ class _RoomsScreenState extends State<RoomsScreen> {
                         borderRadius:12 ,
                       ),
                     ),
-                      const SizedBox(height: 24),
-                      _buildSection('BEST PLACES', [
-                        {'name': 'Ivory Coast', 'image': 'assets/images/room1.jpg'},
-                        {'name': 'Senegal', 'image': 'assets/images/room2.jpg'},
-                        {'name': 'Ville', 'image': 'assets/images/room3.jpg'},
+                      const SizedBox(height: 30),
+                      PlacesAndHotels('BEST PLACES', [
+                        {'name': 'Ivory Coast', 'image': AppImages.ivory},
+                        {'name': 'Senegal', 'image': AppImages.placeTwo},
+                        {'name': 'Ville', 'image': AppImages.placeThree},
                       ]),
 
                       const SizedBox(height: 20),
                       Divider(),
                       const SizedBox(height: 20),
-                      _buildSection('BEST HOTELS', [
-                        {'name': 'Headen Golf', 'image': AppImages.ivory},
-                        {'name': 'Onomo', 'image': 'assets/images/room2.jpg'},
-                        {'name': 'Adagio', 'image': 'assets/images/room3.jpg'},
+                      PlacesAndHotels('BEST HOTELS', [
+                        {'name': 'Headen Golf', 'image': AppImages.hotelOne},
+                        {'name': 'Onomo', 'image': AppImages.hotelTwo},
+                        {'name': 'Adagio', 'image': AppImages.hotelThree},
                       ]),
 
                     ],
@@ -103,72 +101,7 @@ class _RoomsScreenState extends State<RoomsScreen> {
   }
 
 
-  Widget _buildSection(String title, List<Map<String, String>> items) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey.shade600,
-                letterSpacing: 0.5,
-              ),
-            ),
-            Text(
-              'VIEW ALL',
-              style: TextStyle(
-                fontSize: 14,
-                color: AppColors.blue,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
-        SizedBox(
-          height: 100,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: items.length,
-            itemBuilder: (ctx, i) => _buildCard(
-              name: items[i]['name']!,
-              image: items[i]['image']!,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
 
-  Widget _buildCard({required String name, required String image}) {
-    return Container(
-      width: 80,
-      margin: const EdgeInsets.only(right: 12),
-      child: Column(
-        children: [
-          Container(
-            height: 70,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              image: DecorationImage(
-                image: AssetImage(image),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            name,
-            style:  TextStyle(fontSize: 12, color: AppColors.black),
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
-    );
-  }
 
 }
 
