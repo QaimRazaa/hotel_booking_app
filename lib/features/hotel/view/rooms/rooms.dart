@@ -27,12 +27,13 @@ class _RoomsScreenState extends State<RoomsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    int selectedTab = 0;
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
         child: Column(
           children: [
-            CustomAppBar(),
+            CustomAppBar(title: 'Find Room',showBackArrow: false, showActions: true,),
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
@@ -40,7 +41,15 @@ class _RoomsScreenState extends State<RoomsScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomTabBar(),
+                      CustomTabBar(
+                        tabs: ['Hotels', 'Villas',],
+                        selectedIndex: selectedTab,
+                        onTabSelected: (index) {
+                          setState(() {
+                            selectedTab = index;
+                          });
+                        },
+                      ),
 
                       const SizedBox(height: 20),
                       CustomDropdownField(

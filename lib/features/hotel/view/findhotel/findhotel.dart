@@ -81,7 +81,7 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
                         'Set in landscaped gardens overlooking the ...',
                     discount: '25% OFF',
                     price: 127,
-                    onBookPressed: () {},
+                    onBookPressed: () {Navigator.pushNamed(context, AppRoutes.bookNowScreen);},
                   ),
                   Divider(color: AppColors.lightWhite),
                   HotelCard(

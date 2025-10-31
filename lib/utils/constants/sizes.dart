@@ -22,6 +22,7 @@ class Sizes{
   static double size15 = 15;
   static double size20 = 20;
   static double size50 = 50;
+  static double size10 = 10;
 
 
 

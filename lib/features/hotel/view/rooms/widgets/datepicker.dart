@@ -5,12 +5,14 @@ class CustomDatePicker extends StatefulWidget {
   final DateTime? initialDate;
   final ValueChanged<DateTime?> onDateSelected;
   final String hintText;
+  final double fontSize; // 👈 reusable font size
 
   const CustomDatePicker({
     super.key,
     this.initialDate,
     required this.onDateSelected,
-   required this.hintText,
+    required this.hintText,
+    this.fontSize = 18, // default value
   });
 
   @override
@@ -73,7 +75,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
             hintText: widget.hintText,
             hintStyle: GoogleFonts.roboto(
               color: Colors.black,
-              fontSize: 18,
+              fontSize: widget.fontSize, // 👈 use reusable font size
             ),
             enabledBorder: const UnderlineInputBorder(
               borderSide: BorderSide(color: Color(0xFFC4C4C4), width: 1),
@@ -85,7 +87,10 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
           controller: TextEditingController(
             text: selectedDate != null ? _formatDate(selectedDate) : '',
           ),
-          style: GoogleFonts.roboto(color: Colors.black87),
+          style: GoogleFonts.roboto(
+            color: Colors.black87,
+            fontSize: widget.fontSize, // 👈 use reusable font size
+          ),
         ),
       ),
     );
