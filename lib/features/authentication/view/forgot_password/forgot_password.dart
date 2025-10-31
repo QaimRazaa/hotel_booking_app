@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/utils/constants/texts.dart';
 
 import '../../../../common/widgets/elevatedbutton/elevated_button.dart';
 import '../../../../common/widgets/textfield/textfield.dart';
@@ -28,12 +29,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               children: [
                 SizedBox(height: 50),
                 Text(
-                  'Forgot Password?',
-                  style: GoogleFonts.roboto(
-                    color: AppColors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  AppTexts.forgotPassword,
+                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: AppColors.white)
                 ),
                 SizedBox(height: Sizes.size15),
 
@@ -59,11 +56,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                               ),
                               SizedBox(height: 32),
                               CustomTextField(
-                                hintText: 'Email',
+                                hintText: AppTexts.email,
                                 prefixIcon: Icons.email_outlined,
                               ),
-                              SizedBox(height: 24),
-                              SizedBox(height: 16),
+                              SizedBox(height: Sizes.size20 * 2),
                               SizedBox(
                                 width: double.infinity,
                                 height: 50,

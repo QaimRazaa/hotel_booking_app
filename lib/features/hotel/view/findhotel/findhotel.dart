@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/common/widgets/textfield/textfield.dart';
+import 'package:hotel_booking_app/features/hotel/view/findhotel/widgets/appbar.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:hotel_booking_app/utils/constants/sizes.dart';
 import '../../../../../common/widgets/searchfield/searchField.dart';
-import 'appbar.dart';
 
 class FindHotelScreen extends StatefulWidget {
   const FindHotelScreen({super.key});
@@ -74,7 +74,7 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
     );
   }
 
-  // Show amenities dialog from top
+
   void _showAmenitiesBottomSheet(BuildContext context) {
     showGeneralDialog(
       context: context,
@@ -105,7 +105,6 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // Amenities Grid
                       GridView.count(
                         shrinkWrap: true,
                         crossAxisCount: 2,
@@ -239,7 +238,7 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
                               child: Text(
                                 'Clear',
                                 style: TextStyle(
-                                  color: Colors.blue,
+                                  color: AppColors.primary,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -248,25 +247,30 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
                           ),
                           SizedBox(width: 12),
                           Expanded(
-                            child: ElevatedButton(
-                              onPressed: () {
-                                setState(() {}); // Update parent widget
-                                Navigator.pop(context);
-                                // Apply filter logic here
-                              },
-                              style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.symmetric(vertical: 16),
-                                backgroundColor: Colors.blue,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                gradient: AppColors.linerGradient2,
+                                borderRadius: BorderRadius.circular(12),
                               ),
-                              child: Text(
-                                'Apply',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  setState(() {});
+                                  Navigator.pop(context);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  padding: EdgeInsets.symmetric(vertical: 16),
+                                  backgroundColor: Colors.transparent,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                ),
+                                child: Text(
+                                  'Apply',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                             ),
@@ -371,7 +375,7 @@ class AmenityTile extends StatelessWidget {
         decoration: BoxDecoration(
           color: isSelected ? Colors.blue : Colors.transparent,
           border: Border.all(
-            color: isSelected ? Colors.blue : Colors.grey.shade300,
+            color: isSelected ? Colors.blue : AppColors.primary,
             width: 1.5,
           ),
           borderRadius: BorderRadius.circular(12),
@@ -383,7 +387,7 @@ class AmenityTile extends StatelessWidget {
             Icon(
               icon,
               color: isSelected ? Colors.white : Colors.blue,
-              size: 24,
+              size: 40,
             ),
             SizedBox(height: 4),
             Flexible(

@@ -3,7 +3,7 @@ import 'package:hotel_booking_app/features/authentication/view/forgot_password/f
 import 'package:hotel_booking_app/features/authentication/view/signin/sign_in.dart';
 import 'package:hotel_booking_app/features/authentication/view/signup/signup.dart';
 import 'package:hotel_booking_app/features/authentication/view/signup/verify_account.dart';
-import 'package:hotel_booking_app/features/hotel/view/findhotel/widgets/find_hotel.dart';
+import 'package:hotel_booking_app/features/hotel/view/findhotel/findhotel.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/rooms.dart';
 
 import '../features/splash/view/splash_screen.dart';
