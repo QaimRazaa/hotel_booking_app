@@ -8,5 +8,6 @@ class CustomAppTheme {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     textTheme: AppTextTheme.lightTextTheme,
+    brightness: Brightness.dark,
   );
 }

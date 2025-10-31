@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/common/widgets/elevatedbutton/elevated_button.dart';
 import 'package:hotel_booking_app/common/widgets/textfield/textfield.dart';
+import 'package:hotel_booking_app/core/routes.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/amenity_row.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/appbar.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/datepicker.dart';
@@ -93,7 +94,12 @@ class _RoomsScreenState extends State<RoomsScreen> {
                         child: CustomElevatedButton(
                           text: 'Search',
                           gradient: AppColors.linerGradient2,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(
+                              context,
+                              AppRoutes.findHotelScreen,
+                            );
+                          },
                           textColor: AppColors.white,
                           borderRadius: 12,
                         ),

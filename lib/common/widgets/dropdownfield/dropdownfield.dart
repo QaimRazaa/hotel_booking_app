@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/utils/constants/colors.dart';
 
 class CustomDropdownField extends StatefulWidget {
   final String hintText;
   final IconData? prefixIcon;
-  final List<Map<String, String>> items; // title + subtitle
+  final List<Map<String, String>> items;
 
   const CustomDropdownField({
     Key? key,
@@ -15,7 +15,7 @@ class CustomDropdownField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CustomDropdownFieldState createState() => _CustomDropdownFieldState();
+  State<CustomDropdownField> createState() => _CustomDropdownFieldState();
 }
 
 class _CustomDropdownFieldState extends State<CustomDropdownField> {
@@ -24,38 +24,50 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: 58,
+      alignment: Alignment.center,
       child: DropdownButtonFormField<Map<String, String>>(
         value: selectedValue,
-        style: GoogleFonts.roboto(
-          color: AppColors.black,
-          fontSize: 18,
+        isExpanded: true,
+        dropdownColor: Colors.white,
+        icon: const Icon(Icons.keyboard_arrow_down_rounded, color: Colors.grey, size: 26),
+
+        hint: Row(
+          children: [
+            if (widget.prefixIcon != null)
+              Icon(widget.prefixIcon, color: AppColors.primary, size: 22),
+            if (widget.prefixIcon != null) const SizedBox(width: 10),
+            Text(
+              widget.hintText,
+              style: GoogleFonts.roboto(
+                color: AppColors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
         ),
-        decoration: InputDecoration(
-          prefixIcon: widget.prefixIcon != null
-              ? Icon(widget.prefixIcon, color: AppColors.primary)
-              : null,
-          hintText: widget.hintText,
-          hintStyle: GoogleFonts.roboto(
-            color: AppColors.black,
-            fontSize: 18,
-            fontWeight: FontWeight.w400,
-          ),
-          enabledBorder: const UnderlineInputBorder(
+
+        decoration: const InputDecoration(
+          isDense: true,
+          contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+          enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: Color(0xFFC4C4C4), width: 1),
           ),
           focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFFC4C4C4), width: 1),
+            borderSide: BorderSide(color: Color(0xffC4C4C4), width: 1),
           ),
         ),
-        icon: const Icon(Icons.arrow_drop_down, color: Colors.grey),
+
+
         items: widget.items.map((item) {
           return DropdownMenuItem<Map<String, String>>(
             value: item,
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.location_on, color: AppColors.black),
-                const SizedBox(width: 8),
+                const Icon(Icons.location_on_outlined, color: Colors.black54, size: 18),
+                const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -63,10 +75,11 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
                       item['title']!,
                       style: GoogleFonts.roboto(
                         fontSize: 16,
-                        color: AppColors.black,
                         fontWeight: FontWeight.w500,
+                        color: AppColors.black,
                       ),
                     ),
+                    const SizedBox(height: 2),
                     Text(
                       item['subtitle']!,
                       style: GoogleFonts.roboto(
@@ -80,12 +93,17 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
             ),
           );
         }).toList(),
+
         onChanged: (value) {
           setState(() {
             selectedValue = value;
           });
         },
-        dropdownColor: Colors.white,
+
+        style: GoogleFonts.roboto(
+          color: AppColors.black,
+          fontSize: 16,
+        ),
       ),
     );
   }

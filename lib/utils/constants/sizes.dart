@@ -20,6 +20,8 @@ class Sizes{
   static double dividerHeight = 1;
 
   static double size15 = 15;
+  static double size20 = 20;
+  static double size50 = 50;
 
 
 

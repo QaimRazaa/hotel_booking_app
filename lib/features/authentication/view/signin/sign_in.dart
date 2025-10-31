@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/common/widgets/login/bottom.dart';
+import 'package:hotel_booking_app/utils/constants/texts.dart';
 
 import '../../../../common/widgets/elevatedbutton/elevated_button.dart';
 import '../../../../common/widgets/textfield/textfield.dart';
@@ -28,14 +30,10 @@ class _SignInScreenState extends State<SignInScreen> {
               children: [
                 SizedBox(height: 50),
                 Text(
-                  'Sign In',
-                  style: GoogleFonts.roboto(
-                    color: AppColors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  AppTexts.signIn,
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: Sizes.size15),
 
                 Expanded(
                   child: Container(
@@ -54,13 +52,13 @@ class _SignInScreenState extends State<SignInScreen> {
                           child: Column(
                             children: [
                               CustomTextField(
-                                hintText: 'Email',
+                                hintText: AppTexts.email,
                                 prefixIcon: Icons.email_outlined,
                               ),
-                              SizedBox(height: 20),
+                              SizedBox(height: Sizes.size20),
 
                               CustomTextField(
-                                hintText: 'Password',
+                                hintText: AppTexts.password,
                                 prefixIcon: Icons.lock_outline,
                                 obscureText: true,
                               ),
@@ -71,7 +69,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   Navigator.pushNamed(
                                       context, AppRoutes.forgotPasswordScreen);
                                 }, child: Text(
-                                'Forgot Password?',
+                                AppTexts.forgotPassword,
                                 style: GoogleFonts.roboto(
                                   fontSize: 18,
                                   color: AppColors.darkRed,
@@ -83,7 +81,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 width: double.infinity,
                                 height: 50,
                                 child: CustomElevatedButton(
-                                  text: 'Sign In',
+                                  text: AppTexts.signIn,
                                   gradient: AppColors.linerGradient2,
                                   textColor: Colors.white,
                                   fontSize: 16,
@@ -99,92 +97,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                         ),
 
-                        Column(
-                          children: [
-                            SizedBox(height: 24),
-                            Text(
-                              'or sign In using',
-                              style: GoogleFonts.roboto(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff8E929B),
-                              ),
-                            ),
-                            SizedBox(height: 16),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: CustomElevatedButton(
-                                    text: 'Facebook',
-                                    backgroundColor: AppColors.blue,
-                                    textColor: Colors.white,
-                                    fontSize: 18,
-                                    onPressed: () {},
-                                  ),
-                                ),
-                                SizedBox(width: 16),
-                                Expanded(
-                                  child: CustomElevatedButton(
-                                    text: 'Google',
-                                    backgroundColor: AppColors.red,
-                                    textColor: Colors.white,
-                                    fontSize: 18,
-                                    onPressed: () {},
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 16),
-                            RichText(
-                              textAlign: TextAlign.center,
-                              text: TextSpan(
-                                text:
-                                'By creating an account, you are agree to our ',
-                                style: GoogleFonts.roboto(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xff8E929B),
-                                ),
-                                children: [
-                                  TextSpan(
-                                    text: 'Terms',
-                                    style: GoogleFonts.roboto(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColors.green,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 50),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Already have an account? ',
-                                  style: GoogleFonts.roboto(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color(0xff8E929B),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Text(
-                                    'Sign In',
-                                    style: GoogleFonts.roboto(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColors.green,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                        LoginScreenBottom()
                       ],
                     ),
                   ),

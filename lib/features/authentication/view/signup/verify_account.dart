@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/features/authentication/view/signin/sign_in.dart';
+import 'package:hotel_booking_app/utils/constants/texts.dart';
 
 import '../../../../common/widgets/elevatedbutton/elevated_button.dart';
 import '../../../../common/widgets/textfield/textfield.dart';
@@ -36,14 +37,10 @@ class _VerifyAccountScreenState extends State<VerifyAccountScreen> {
               children: [
                 SizedBox(height: 50),
                 Text(
-                  'Verify Account',
-                  style: GoogleFonts.roboto(
-                    color: AppColors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  AppTexts.verifyAccount,
+                  style: Theme.of(context).textTheme.headlineMedium
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: Sizes.size15),
 
                 Expanded(
                   child: Container(
@@ -61,17 +58,12 @@ class _VerifyAccountScreenState extends State<VerifyAccountScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'VERIFY MOBILE NUMBER',
-                                style: GoogleFonts.roboto(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black,
-                                  letterSpacing: 0.5,
-                                ),
+                                AppTexts.verifyMobileNo,
+                                style: Theme.of(context).textTheme.headlineSmall
                               ),
                               SizedBox(height: 12),
                               Text(
-                                'OTP has been sent to you on your mobile number, please enter it below',
+                                AppTexts.otpSent,
                                 style: Theme.of(context).textTheme.bodySmall
                               ),
                               SizedBox(height: 32),
@@ -119,12 +111,8 @@ class _VerifyAccountScreenState extends State<VerifyAccountScreen> {
                               SizedBox(height: 24),
                               Center(
                                 child: Text(
-                                  "Don't received otp?",
-                                  style: GoogleFonts.roboto(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color(0xff8E929B),
-                                  ),
+                                  AppTexts.didntRecieveOtp,
+                                  style: Theme.of(context).textTheme.bodySmall
                                 ),
                               ),
                               SizedBox(height: 16),
@@ -132,7 +120,7 @@ class _VerifyAccountScreenState extends State<VerifyAccountScreen> {
                                 children: [
                                   Expanded(
                                     child: CustomElevatedButton(
-                                      text: 'Resend in 30s',
+                                      text: AppTexts.resend,
                                       backgroundColor: AppColors.green,
                                       textColor: Colors.white,
                                       fontSize: 16,
@@ -143,7 +131,7 @@ class _VerifyAccountScreenState extends State<VerifyAccountScreen> {
                                   SizedBox(width: 12),
                                   Expanded(
                                     child: CustomElevatedButton(
-                                      text: 'Change number',
+                                      text: AppTexts.changeNumber,
                                       backgroundColor: AppColors.blue,
                                       textColor: Colors.white,
                                       fontSize: 16,

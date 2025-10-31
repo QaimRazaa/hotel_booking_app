@@ -11,15 +11,16 @@ class AppTextTheme {
       fontWeight: FontWeight.w400,
       color: Colors.white,
     ),
-    headlineMedium: TextStyle().copyWith(
+    headlineMedium: GoogleFonts.roboto(
       fontSize: 24,
-      fontWeight: FontWeight.w600,
-      color: Colors.black,
+      fontWeight: FontWeight.w500,
+      color: AppColors.white,
     ),
-    headlineSmall: TextStyle().copyWith(
+    headlineSmall: GoogleFonts.roboto(
       fontSize: 18,
       fontWeight: FontWeight.w600,
       color: Colors.black,
+      letterSpacing: 0.5,
     ),
 
     titleLarge: TextStyle().copyWith(

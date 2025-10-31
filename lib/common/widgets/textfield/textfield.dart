@@ -14,7 +14,7 @@ class CustomTextField extends StatelessWidget {
   final double fontSize;
   final FontWeight fontWeight;
   final Color textColor;
-  final Color hintTextColor; // ✅ new reusable color for hint text
+  final Color hintTextColor;
 
   const CustomTextField({
     Key? key,
@@ -29,7 +29,7 @@ class CustomTextField extends StatelessWidget {
     this.fontSize = 16,
     this.fontWeight = FontWeight.normal,
     this.textColor = Colors.black,
-    this.hintTextColor = Colors.grey, // ✅ default same as before
+    this.hintTextColor = Colors.grey,
   }) : super(key: key);
 
   @override
@@ -56,7 +56,7 @@ class CustomTextField extends StatelessWidget {
           hintStyle: GoogleFonts.roboto(
             fontSize: fontSize,
             fontWeight: fontWeight,
-            color: hintTextColor, // ✅ applied here
+            color: hintTextColor,
           ),
           border: underLine
               ? const UnderlineInputBorder(
