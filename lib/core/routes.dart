@@ -4,6 +4,7 @@ import 'package:hotel_booking_app/features/authentication/view/signin/sign_in.da
 import 'package:hotel_booking_app/features/authentication/view/signup/signup.dart';
 import 'package:hotel_booking_app/features/authentication/view/signup/verify_account.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/findhotel.dart';
+import 'package:hotel_booking_app/features/hotel/view/findhotel/hotellocation/hotel_location.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/rooms.dart';
 
 import '../features/splash/view/splash_screen.dart';
@@ -24,6 +25,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const RoomsScreen());
       case AppRoutes.findHotelScreen:
       return MaterialPageRoute(builder: (_) => const FindHotelScreen());
+      case AppRoutes.hotelLocationScreen:
+      return MaterialPageRoute(builder: (_) => const HotelLocationScreen());
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(
@@ -41,4 +44,5 @@ class AppRoutes {
   static const String forgotPasswordScreen = 'ForgotPasswordScreen';
   static const String roomScreen = 'RoomScreen';
   static const String findHotelScreen = 'FindHotelScreen';
+  static const String hotelLocationScreen = 'HotelLocationScreen';
 }

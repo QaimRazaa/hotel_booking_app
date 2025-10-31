@@ -17,7 +17,7 @@ class Sizes{
   static double spaceBetweenSections = 32;
 
 
-  static double dividerHeight = 1;
+  static double dividerHeight = 5;
 
   static double size15 = 15;
   static double size20 = 20;
