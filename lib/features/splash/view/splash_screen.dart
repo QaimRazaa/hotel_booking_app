@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Stack(
                   alignment: Alignment.center,
                   children: [
-                    Image(image: AssetImage(AppImages.backgroundOne)),
+                    Image.asset(AppImages.backgroundOne),
                     Positioned(top: 10, left: 20, child: Clouds()),
                     Positioned(top: 30, right: 30, child: Clouds()),
 
