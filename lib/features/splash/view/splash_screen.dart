@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/features/authentication/view/signup/signup.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
+import 'package:hotel_booking_app/utils/constants/images.dart';
 import 'package:hotel_booking_app/utils/constants/texts.dart';
 
 import '../../../utils/constants/sizes.dart';
@@ -15,13 +16,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  final SplashScreenViewModel _viewModel = SplashScreenViewModel();
-
-  @override
-  void initState() {
-    super.initState();
-    _viewModel.startSplashScreenTimer(context, SignupScreen());
-  }
+  // final SplashScreenViewModel _viewModel = SplashScreenViewModel();
+  //
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _viewModel.startSplashScreenTimer(context, SignupScreen());
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,18 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Stack(
                   alignment: Alignment.center,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Buildings(36, 100),
-                        Buildings(45, 200),
-                        Buildings(54, 120),
-                        Buildings(45, 220),
-                        Buildings(58, 150),
-                        Buildings(20, 67),
-                      ],
-                    ),
+                    Image(image: AssetImage(AppImages.backgroundOne)),
                     Positioned(top: 10, left: 20, child: Clouds()),
                     Positioned(top: 30, right: 30, child: Clouds()),
 
