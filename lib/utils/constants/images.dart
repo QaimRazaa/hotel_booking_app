@@ -8,5 +8,6 @@ class AppImages {
   static String hotelTwo = "assets/images/hotels/hoteltwo.jpg";
   static String hotelThree = "assets/images/hotels/hotelthree.png";
 
-  static const String backgroundOne = "assets/background/background.png";
+  static const String backgroundOne = "assets/background/bgone.png";
+  static const String locationIcon = "assets/background/Rectangle.png";
 }

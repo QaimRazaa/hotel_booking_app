@@ -12,19 +12,21 @@ class SplashScreen extends StatefulWidget {
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
-
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  // final SplashScreenViewModel _viewModel = SplashScreenViewModel();
-  //
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _viewModel.startSplashScreenTimer(context, SignupScreen());
-  // }
+  final SplashScreenViewModel _viewModel = SplashScreenViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    _viewModel.startSplashScreenTimer(context, SignupScreen());
+  }
+
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(gradient: AppColors.linerGradient),
@@ -33,102 +35,63 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Image.asset(AppImages.backgroundOne),
-                    Positioned(top: 10, left: 20, child: Clouds()),
-                    Positioned(top: 30, right: 30, child: Clouds()),
+                SizedBox(
+                  height: size.height * 0.45,
+                  width: size.width * 0.8,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Positioned.fill(
+                        child: Image.asset(
+                          AppImages.backgroundOne,
+                          fit: BoxFit.contain,
+                          width: size.width * 1.2,
+                        ),
+                      ),
 
-                    Positioned(
-                      top: 120,
-                      bottom: 0,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            color: Colors.orange,
-                            size: 125,
-                          ),
-                          Positioned(
-                            top: 33,
-                            child: Container(
-                              width: 30,
-                              height: 30,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
+                      Positioned(
+                        bottom: 80,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Image.asset(
+                              AppImages.locationIcon,
+                              width: 110,
+                              height: 110,
+                              fit: BoxFit.contain,
+                            ),
+
+                            Positioned(
+                              top: 28,
+                              child: Container(
+                                width: 38,
+                                height: 38,
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  shape: BoxShape.circle,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                SizedBox(height: Sizes.height60),
+
                 Text(
                   AppTexts.findHotel,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.headlineLarge,
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
           ),
         ),
       ),
-    );
-  }
-
-  Widget Buildings(double width, double height) {
-    return SizedBox(
-      width: 50,
-      child: Container(
-        width: width,
-        height: height,
-        decoration: BoxDecoration(color: AppColors.lightWhite.withOpacity(0.5)),
-      ),
-    );
-  }
-
-  Widget Clouds() {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Container(
-          width: 20,
-          height: 12,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(-8, 0),
-          child: Container(
-            width: 35,
-            height: 35,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-            ),
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(-16, 0),
-          child: Container(
-            width: 30,
-            height: 20,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
