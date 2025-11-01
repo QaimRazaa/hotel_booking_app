@@ -13,7 +13,7 @@ class Sizes{
 
 
   static const double defaultSpace = 24;
-  static double spaceBetweenItems = 16;
+  static double spaceBetweenItems = 12;
   static double spaceBetweenSections = 32;
 
 
