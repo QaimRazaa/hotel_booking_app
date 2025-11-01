@@ -12,6 +12,7 @@ import '../../../../../common/widgets/textfield/textfield.dart';
 import '../../rooms/widgets/appbar.dart';
 import '../../rooms/widgets/datepicker.dart';
 
+
 class BookNowScreen extends StatefulWidget {
   const BookNowScreen({super.key});
 
@@ -67,41 +68,29 @@ class _BookNowScreenState extends State<BookNowScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          _buildFacility(AppImages.wifiIcon, 'Free Wifi'),
-                          _buildFacility(
-                            AppImages.fitnessIcon,
-                            'Fitness Center',
-                          ),
-                          _buildFacility(
-                            AppImages.breakfastIcon,
-                            'Free Breakfast',
-                          ),
-                          _buildFacility(
-                            AppImages.kidFriendlyIcon,
-                            'Kid Friendly',
-                          ),
+                          FacilityWidget(assetPath: AppImages.wifiIcon, title: 'Free Wifi'),
+                          FacilityWidget(assetPath: AppImages.fitnessIcon, title: 'Fitness Center'),
+                          FacilityWidget(assetPath: AppImages.breakfastIcon, title: 'Free Breakfast'),
+                          FacilityWidget(assetPath: AppImages.kidFriendlyIcon, title: 'Kid Friendly'),
                         ],
                       ),
                       SizedBox(height: Sizes.size20),
 
                       Divider(color: Color(0xffEBF1F5)),
-                      _buildContactRow(
-                        Icons.location_on,
-                        'Abidjan, Cocle d\'lvoire',
+                      ContactRowWidget(
+                        icon: Icons.location_on,
+                        text: 'Abidjan, Cocle d\'lvoire',
                       ),
                       SizedBox(height: Sizes.xs),
 
-                      _buildContactRow(Icons.phone, '(+225) 22-40-20-26'),
+                      ContactRowWidget(icon: Icons.phone, text: '(+225) 22-40-20-26'),
                       SizedBox(height: Sizes.xs),
 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          _buildContactRow(Icons.access_time, 'Check-In 12 PM'),
-                          _buildContactRow(
-                            Icons.access_time_filled,
-                            'Checkout 11 AM',
-                          ),
+                          ContactRowWidget(icon: Icons.access_time, text: 'Check-In 12 PM'),
+                          ContactRowWidget(icon: Icons.access_time_filled, text: 'Checkout 11 AM'),
                         ],
                       ),
                       Divider(color: Color(0xffEBF1F5)),
@@ -110,18 +99,9 @@ class _BookNowScreenState extends State<BookNowScreen> {
                       InfoChipGrid(
                         chips: [
                           {'asset': AppImages.wifiIcon, 'text': 'Wifi'},
-                          {
-                            'asset': AppImages.breakfastIcon,
-                            'text': 'Breafast',
-                          },
-                          {
-                            'asset': AppImages.kidFriendlyIcon,
-                            'text': 'Kid Friendly',
-                          },
-                          {
-                            'asset': AppImages.breakfastIcon,
-                            'text': 'Breakfast',
-                          },
+                          {'asset': AppImages.breakfastIcon, 'text': 'Breafast'},
+                          {'asset': AppImages.kidFriendlyIcon, 'text': 'Kid Friendly'},
+                          {'asset': AppImages.breakfastIcon, 'text': 'Breakfast'},
                           {'asset': AppImages.fitnessIcon, 'text': 'Pool'},
                           {'asset': AppImages.fitnessIcon, 'text': 'Pool'},
                         ],
@@ -182,21 +162,21 @@ class _BookNowScreenState extends State<BookNowScreen> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
-                            _buildFoodCard(
-                              AppImages.foodOne,
-                              'Continental breakfast',
+                            FoodCardWidget(
+                              imageUrl: AppImages.foodOne,
+                              label: 'Continental breakfast',
                             ),
-                            _buildFoodCard(
-                              AppImages.foodTwo,
-                              'Fried bacon and scrambled eggs',
+                            FoodCardWidget(
+                              imageUrl: AppImages.foodTwo,
+                              label: 'Fried bacon and scrambled eggs',
                             ),
-                            _buildFoodCard(
-                              AppImages.foodThree,
-                              'Chinese seafood hot',
+                            FoodCardWidget(
+                              imageUrl: AppImages.foodThree,
+                              label: 'Chinese seafood hot',
                             ),
-                            _buildFoodCard(
-                              AppImages.foodFour,
-                              'Japanese bento',
+                            FoodCardWidget(
+                              imageUrl: AppImages.foodFour,
+                              label: 'Japanese bento',
                             ),
                           ],
                         ),
@@ -218,73 +198,6 @@ class _BookNowScreenState extends State<BookNowScreen> {
       ),
     );
   }
-
-  Widget _buildFacility(String assetPath, String title) {
-    return Column(
-      children: [
-        Image.asset(
-          assetPath,
-          width: 40,
-          height: 40,
-          color: AppColors.primary,
-          fit: BoxFit.contain,
-        ),
-        const SizedBox(height: 4),
-        Text(
-          title,
-          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w300),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildContactRow(IconData icon, String text) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
-      child: Row(
-        children: [
-          Icon(icon, size: 18, color: AppColors.primary),
-          const SizedBox(width: 12),
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              color: AppColors.black,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildFoodCard(String imageUrl, String label) {
-    return Container(
-      width: 100,
-      margin: const EdgeInsets.only(right: 12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.asset(
-              imageUrl,
-              height: 80,
-              width: 100,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) =>
-                  Container(height: 80, width: 100, color: Colors.grey[300]),
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: const TextStyle(fontSize: 12, color: Colors.black),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ],
-      ),
-    );
-  }
 }
+
+
