@@ -190,17 +190,9 @@ class _BookNowScreenState extends State<BookNowScreen> {
                       padding: const EdgeInsets.all(20),
                       alignment: Alignment.center,
                       child: InfoChipGrid(
-                        chips: [
-                          {'asset': AppImages.wifiIcon, 'text': 'Wifi'},
-                          {'asset': AppImages.breakfastIcon, 'text': 'Breakfast'},
-                          {'asset': AppImages.kidFriendlyIcon, 'text': 'Kid Friendly'},
-                          {'asset': AppImages.breakfastIcon, 'text': 'Breakfast'},
-                          {'asset': AppImages.fitnessIcon, 'text': 'Pool'},
-                          {'asset': AppImages.fitnessIcon, 'text': 'Pool'},
-                        ],
+                        chips: [],
                       ),
                     ),
-                    // Near By
                     Container(
                       padding: const EdgeInsets.all(20),
                       alignment: Alignment.center,
