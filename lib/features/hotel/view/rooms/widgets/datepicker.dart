@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../../utils/device/device_utils.dart';
 
 class CustomDatePicker extends StatefulWidget {
   final DateTime? initialDate;
   final ValueChanged<DateTime?> onDateSelected;
   final String hintText;
-  final double fontSize; // 👈 reusable font size
+  final double fontSize;
 
   const CustomDatePicker({
     super.key,
     this.initialDate,
     required this.onDateSelected,
     required this.hintText,
-    this.fontSize = 18, // default value
+    this.fontSize = 18,
   });
 
   @override
@@ -26,6 +27,13 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
   void initState() {
     super.initState();
     selectedDate = widget.initialDate;
+  }
+
+  // ✅ Move AppSizes.init(context) here — safe to use MediaQuery now
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    AppSizes.init(context);
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -71,17 +79,27 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
       child: AbsorbPointer(
         child: TextField(
           decoration: InputDecoration(
-            prefixIcon: const Icon(Icons.calendar_today, color: Colors.blue),
+            prefixIcon: Icon(
+              Icons.calendar_today,
+              color: Colors.blue,
+              size: AppSizes.icon(2), // responsive icon
+            ),
             hintText: widget.hintText,
             hintStyle: GoogleFonts.roboto(
               color: Colors.black,
-              fontSize: widget.fontSize, // 👈 use reusable font size
+              fontSize: AppSizes.font(widget.fontSize / 10), // responsive font
             ),
-            enabledBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(color: Color(0xFFC4C4C4), width: 1),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: const Color(0xFFC4C4C4),
+                width: AppSizes.height(0.15),
+              ),
             ),
-            focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue, width: 1),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.blue,
+                width: AppSizes.height(0.15),
+              ),
             ),
           ),
           controller: TextEditingController(
@@ -89,7 +107,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
           ),
           style: GoogleFonts.roboto(
             color: Colors.black87,
-            fontSize: widget.fontSize, // 👈 use reusable font size
+            fontSize: AppSizes.font(widget.fontSize / 10),
           ),
         ),
       ),

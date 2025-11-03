@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
+import '../../../../../utils/device/device_utils.dart';
 
 class CustomSmallAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -20,23 +21,23 @@ class CustomSmallAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.white,
       elevation: 0,
       automaticallyImplyLeading: false,
-      titleSpacing: 16,
+      titleSpacing: AppSizes.width(4),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
             style: GoogleFonts.roboto(
-              fontSize: 24,
+              fontSize: AppSizes.font(2.7), // responsive font
               fontWeight: FontWeight.w500,
               color: AppColors.black,
             ),
           ),
-          const SizedBox(height: 2),
+          SizedBox(height: AppSizes.height(0.5)),
           Text(
             subtitle,
             style: GoogleFonts.roboto(
-              fontSize: 14,
+              fontSize: AppSizes.font(1.6), // responsive font
               fontWeight: FontWeight.w600,
               color: AppColors.black,
             ),
@@ -46,17 +47,17 @@ class CustomSmallAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           onPressed: onLocationTap,
-          icon: const Icon(
+          icon: Icon(
             Icons.location_on_outlined,
             color: AppColors.primary,
-            size: 24,
+            size: AppSizes.icon(3), // responsive icon
           ),
         ),
-        const SizedBox(width: 8),
+        SizedBox(width: AppSizes.width(2)),
       ],
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(60);
+  Size get preferredSize => Size.fromHeight(AppSizes.height(7.5));
 }

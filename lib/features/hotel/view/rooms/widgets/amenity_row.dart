@@ -1,15 +1,36 @@
 import 'package:flutter/material.dart';
+import '../../../../../utils/device/device_utils.dart';
 
 Widget AmenityRow() {
   return Row(
     children: [
-      Icon(Icons.ac_unit, size: 20, color: Colors.grey.shade400),
-      const SizedBox(width: 8),
-      Text('Fan', style: TextStyle(color: Colors.grey.shade400)),
-      const SizedBox(width: 24),
-      const Icon(Icons.circle, size: 10, color: Colors.blue),
-      const SizedBox(width: 8),
-      const Text('Air conditioned', style: TextStyle(color: Colors.black)),
+      Icon(
+        Icons.ac_unit,
+        size: 20,
+        color: Colors.grey.shade400,
+      ),
+      SizedBox(width: AppSizes.width(2)),
+      Text(
+        'Fan',
+        style: TextStyle(
+          color: Colors.grey.shade400,
+          fontSize: 16,
+        ),
+      ),
+      SizedBox(width: AppSizes.width(6)),
+      Icon(
+        Icons.circle,
+        size: 10,
+        color: Colors.blue,
+      ),
+      SizedBox(width: AppSizes.width(2)),
+      Text(
+        'Air conditioned',
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 16,
+        ),
+      ),
     ],
   );
 }

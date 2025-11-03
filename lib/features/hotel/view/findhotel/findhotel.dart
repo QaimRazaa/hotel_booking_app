@@ -8,6 +8,7 @@ import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:hotel_booking_app/utils/constants/images.dart';
 import 'package:hotel_booking_app/utils/constants/sizes.dart';
 import '../../../../../common/widgets/searchfield/searchField.dart';
+import '../../../../utils/device/device_utils.dart';
 import '../rooms/widgets/navbar.dart';
 
 class FindHotelScreen extends StatefulWidget {
@@ -18,7 +19,9 @@ class FindHotelScreen extends StatefulWidget {
 }
 
 class _FindHotelScreenState extends State<FindHotelScreen> {
-  Set<String> selectedAmenities = {};
+  void _showAmenitiesSheet() {
+    AmenitiesBottomSheet.show(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,9 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
       appBar: CustomSmallAppBar(
         title: 'Hotels',
         subtitle: 'Abidos Hotel Apartment',
-        onLocationTap: () {Navigator.pushNamed(context, AppRoutes.hotelLocationScreen);},
+        onLocationTap: () {
+          Navigator.pushNamed(context, AppRoutes.hotelLocationScreen);
+        },
       ),
       body: Padding(
         padding: EdgeInsets.all(Sizes.defaultSpace),
@@ -39,7 +44,7 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
                 prefixIcon: Icons.search,
                 onChanged: (query) {},
               ),
-              SizedBox(height: 16),
+              SizedBox(height: AppSizes.height(2)),
 
               Row(
                 children: [
@@ -50,7 +55,8 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
                       onTap: () => _showAmenitiesSheet(),
                     ),
                   ),
-                  SizedBox(width: 12),
+                  SizedBox(width: AppSizes.width(2)),
+
                   Expanded(
                     child: FilterButton(
                       label: 'Filter by',
@@ -58,7 +64,8 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
                       onTap: () {},
                     ),
                   ),
-                  SizedBox(width: 12),
+                  SizedBox(width: AppSizes.width(2)),
+
                   Expanded(
                     child: FilterButton(
                       label: 'Sort by',
@@ -68,7 +75,7 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: Sizes.size15),
+              SizedBox(height: AppSizes.height(2)),
 
               Column(
                 children: [
@@ -77,11 +84,12 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
                     title: 'Heden golf',
                     rating: 3.9,
                     reviewCount: 200,
-                    description:
-                        'Set in landscaped gardens overlooking the ...',
+                    description: 'Set in landscaped gardens overlooking the ...',
                     discount: '25% OFF',
                     price: 127,
-                    onBookPressed: () {Navigator.pushNamed(context, AppRoutes.bookNowScreen);},
+                    onBookPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.bookNowScreen);
+                    },
                   ),
                   Divider(color: AppColors.lightWhite),
                   HotelCard(
@@ -89,8 +97,7 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
                     title: 'Onomo',
                     rating: 4.3,
                     reviewCount: 150,
-                    description:
-                        'Adagio City Aparthotel is a joint venture ...',
+                    description: 'Adagio City Aparthotel is a joint venture ...',
                     discount: '',
                     price: 150,
                     onBookPressed: () {},
@@ -123,17 +130,7 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavBar(),
-    );
-  }
-
-  void _showAmenitiesSheet() {
-    AmenitiesBottomSheet.show(
-      context,
-      selectedAmenities: selectedAmenities,
-      onUpdate: () {
-        setState(() {});
-      },
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

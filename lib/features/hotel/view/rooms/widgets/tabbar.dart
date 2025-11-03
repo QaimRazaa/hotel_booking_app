@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/device/device_utils.dart';
 
 class CustomTabBar extends StatelessWidget {
   final List<String> tabs;
@@ -25,11 +27,11 @@ class CustomTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
+      height: AppSizes.height(5), // 40 original
       decoration: BoxDecoration(
         color: inactiveColor,
-        border: Border.all(color: borderColor, width: 2),
-        borderRadius: BorderRadius.circular(15),
+        border: Border.all(color: borderColor, width: AppSizes.width(0.5)), // 2
+        borderRadius: BorderRadius.circular(AppSizes.width(3.75)), // 15
       ),
       clipBehavior: Clip.hardEdge,
       child: Row(
@@ -48,6 +50,7 @@ class CustomTabBar extends StatelessWidget {
                   style: TextStyle(
                     color: isSelected ? selectedTextColor : unselectedTextColor,
                     fontWeight: FontWeight.w500,
+                    fontSize: AppSizes.font(1.75), // default font sizing
                   ),
                 ),
               ),

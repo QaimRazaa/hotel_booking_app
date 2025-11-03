@@ -17,7 +17,7 @@ class CustomTextField extends StatelessWidget {
   final Color hintTextColor;
 
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.hintText,
     this.prefixIcon,
     this.obscureText = false,
@@ -30,7 +30,7 @@ class CustomTextField extends StatelessWidget {
     this.fontWeight = FontWeight.normal,
     this.textColor = Colors.black,
     this.hintTextColor = Colors.grey,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

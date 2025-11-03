@@ -11,7 +11,7 @@ class CustomElevatedButton extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
 
   const CustomElevatedButton({
-    Key? key,
+    super.key,
     required this.text,
     this.backgroundColor,
     this.gradient,
@@ -20,7 +20,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.fontSize = 16,
     this.borderRadius = 25,
     this.padding,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

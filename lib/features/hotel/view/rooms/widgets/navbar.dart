@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/routes.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
+import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});

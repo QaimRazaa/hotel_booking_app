@@ -3,11 +3,10 @@ import 'package:hotel_booking_app/common/widgets/elevatedbutton/elevated_button.
 import 'package:hotel_booking_app/core/routes.dart';
 import 'package:hotel_booking_app/features/authentication/view/signup/widgets/custom_country_field.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
-import 'package:hotel_booking_app/utils/constants/sizes.dart';
 import 'package:hotel_booking_app/utils/constants/texts.dart';
-
 import '../../../../common/widgets/login/bottom.dart';
 import '../../../../common/widgets/textfield/textfield.dart';
+import '../../../../utils/device/device_utils.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -17,32 +16,35 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-
   @override
   Widget build(BuildContext context) {
+    AppSizes.init(context);
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(gradient: AppColors.linerGradient),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(Sizes.defaultSpace / 1.5),
+            padding: EdgeInsets.all(AppSizes.width(4)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: Sizes.size50),
+                SizedBox(height: AppSizes.height(6)),
                 Text(
                   AppTexts.signUp,
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    fontSize: AppSizes.font(3),
+                  ),
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: AppSizes.height(2)),
 
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
                       color: AppColors.white,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(AppSizes.width(5)),
                     ),
-                    padding: EdgeInsets.all(Sizes.defaultSpace * 1),
+                    padding: EdgeInsets.all(AppSizes.width(4)),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -52,32 +54,32 @@ class _SignupScreenState extends State<SignupScreen> {
                               hintText: AppTexts.fullName,
                               prefixIcon: Icons.person_outline,
                             ),
-                            SizedBox(height: Sizes.size20),
+                            SizedBox(height: AppSizes.height(2)),
 
                             CustomTextField(
                               hintText: AppTexts.email,
                               prefixIcon: Icons.email_outlined,
                             ),
-                            SizedBox(height: Sizes.size20),
+                            SizedBox(height: AppSizes.height(2)),
 
                             CountryCodeField(),
-                            SizedBox(height: Sizes.size20),
+                            SizedBox(height: AppSizes.height(2)),
 
                             CustomTextField(
                               hintText: AppTexts.password,
                               prefixIcon: Icons.lock_outline,
                               obscureText: true,
                             ),
-                            SizedBox(height: Sizes.spaceBetweenSections),
+                            SizedBox(height: AppSizes.height(3)),
 
                             SizedBox(
                               width: double.infinity,
-                              height: 50,
+                              height: AppSizes.height(5.2),
                               child: CustomElevatedButton(
                                 text: AppTexts.createAccount,
                                 gradient: AppColors.linerGradient2,
                                 textColor: Colors.white,
-                                fontSize: 16,
+                                fontSize: AppSizes.font(2),
                                 onPressed: () {
                                   Navigator.pushNamed(
                                     context,

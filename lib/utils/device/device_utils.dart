@@ -1,33 +1,38 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class DeviceUtils {
-  static double width(BuildContext context) => MediaQuery.of(context).size.width;
-  static double height(BuildContext context) => MediaQuery.of(context).size.height;
+class AppSizes {
+  static late double screenWidth;
+  static late double screenHeight;
 
-  static double statusBar(BuildContext context) => MediaQuery.of(context).padding.top;
-  static double bottomNav(BuildContext context) => MediaQuery.of(context).padding.bottom;
-  static double appBarHeight = kToolbarHeight;
+  static late double blockWidth;
+  static late double blockHeight;
 
-  static double appBarWeight (){
-    return kToolbarHeight;
+  static void init(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    screenWidth = size.width;
+    screenHeight = size.height;
+
+    blockWidth = screenWidth / 100;
+    blockHeight = screenHeight / 100;
   }
 
-  static double getScreenWidth(BuildContext context) {
-    return MediaQuery.of(context).size.width;
-  }
+  static double width(double percent) => blockWidth * percent;
 
-  static double keyboardHeight(BuildContext context) => MediaQuery.of(context).viewInsets.bottom;
-  static bool isKeyboardVisible(BuildContext context) => MediaQuery.of(context).viewInsets.bottom > 0;
+  static double height(double percent) => blockHeight * percent;
 
-  static void hideKeyboard(BuildContext context) => FocusScope.of(context).unfocus();
+  static double font(double percent) => blockHeight * percent;
 
-  static bool isPortrait(BuildContext context) => MediaQuery.of(context).orientation == Orientation.portrait;
-  static bool isTablet(BuildContext context) => MediaQuery.of(context).size.shortestSide >= 600;
+  static EdgeInsets paddingAll(double percent) =>
+      EdgeInsets.all(blockWidth * percent);
 
-  static Future<void> vibrate() async => HapticFeedback.vibrate();
+  static EdgeInsets paddingSymmetric({double horizontal = 0, double vertical = 0}) =>
+      EdgeInsets.symmetric(horizontal: blockWidth * horizontal, vertical: blockHeight * vertical);
 
-  static bool isPhysicalDevice() => Platform.isAndroid || Platform.isIOS;
+  static BorderRadius borderRadius(double percent) =>
+      BorderRadius.circular(blockWidth * percent);
+
+  static double radius(double percent) => blockWidth * percent;
+
+  static double icon(double percent) => blockHeight * percent;
 
 }

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/utils/constants/texts.dart';
-
 import '../../../../common/widgets/elevatedbutton/elevated_button.dart';
 import '../../../../common/widgets/textfield/textfield.dart';
 import '../../../../core/routes.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/device/device_utils.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -18,56 +16,63 @@ class ForgotPasswordScreen extends StatefulWidget {
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
+    AppSizes.init(context);
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(gradient: AppColors.linerGradient),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(Sizes.defaultSpace / 1),
+            padding: EdgeInsets.all(AppSizes.width(4)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 50),
+                SizedBox(height: AppSizes.height(6)),
                 Text(
                   AppTexts.forgotPassword,
-                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: AppColors.white)
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall
+                      ?.copyWith(color: AppColors.white, fontSize: AppSizes.font(3)),
                 ),
-                SizedBox(height: Sizes.size15),
+                SizedBox(height: AppSizes.height(1.5)),
 
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
                       color: AppColors.white,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(AppSizes.width(5)),
                     ),
-                    padding: EdgeInsets.all(Sizes.defaultSpace),
+                    padding: EdgeInsets.all(AppSizes.width(4)),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding:  EdgeInsets.all(Sizes.defaultSpace / 3),
+                          padding: EdgeInsets.all(AppSizes.width(1.5)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(height: 12),
+                              SizedBox(height: AppSizes.height(1.5)),
                               Text(
-                                  'Please  enter your registered email \n address to recover your password',
-                                  style: Theme.of(context).textTheme.bodySmall
+                                'Please enter your registered email \naddress to recover your password',
+                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                  fontSize: AppSizes.font(1.6),
+                                ),
                               ),
-                              SizedBox(height: 32),
+                              SizedBox(height: AppSizes.height(4)),
                               CustomTextField(
                                 hintText: AppTexts.email,
                                 prefixIcon: Icons.email_outlined,
                               ),
-                              SizedBox(height: Sizes.size20 * 2),
+                              SizedBox(height: AppSizes.height(5)),
                               SizedBox(
                                 width: double.infinity,
-                                height: 50,
+                                height: AppSizes.height(6),
                                 child: CustomElevatedButton(
                                   text: 'Submit',
                                   gradient: AppColors.linerGradient2,
                                   textColor: Colors.white,
-                                  fontSize: 16,
+                                  fontSize: AppSizes.font(2),
                                   onPressed: () {
                                     Navigator.pushNamed(
                                       context,
@@ -89,6 +94,5 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         ),
       ),
     );
-
   }
 }

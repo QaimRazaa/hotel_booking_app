@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/device/device_utils.dart';
 
 Widget PlacesAndHotels(String title, List<Map<String, String>> items) {
   return Column(
@@ -11,7 +12,7 @@ Widget PlacesAndHotels(String title, List<Map<String, String>> items) {
           Text(
             title,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: AppSizes.font(1.75), // 14
               color: Colors.grey.shade600,
               letterSpacing: 0.5,
             ),
@@ -19,16 +20,16 @@ Widget PlacesAndHotels(String title, List<Map<String, String>> items) {
           Text(
             'VIEW ALL',
             style: TextStyle(
-              fontSize: 14,
+              fontSize: AppSizes.font(1.75), // 14
               color: AppColors.blue,
               fontWeight: FontWeight.w500,
             ),
           ),
         ],
       ),
-      const SizedBox(height: 20),
+      SizedBox(height: AppSizes.height(2.5)), // 20
       SizedBox(
-        height: 100,
+        height: AppSizes.height(12.5), // 100
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: items.length,
@@ -44,24 +45,27 @@ Widget PlacesAndHotels(String title, List<Map<String, String>> items) {
 
 Widget _buildCard({required String name, required String image}) {
   return Container(
-    width: 80,
-    margin: const EdgeInsets.only(right: 12),
+    width: AppSizes.width(20), // 80
+    margin: EdgeInsets.only(right: AppSizes.width(3)), // 12
     child: Column(
       children: [
         Container(
-          height: 70,
+          height: AppSizes.height(8.75), // 70
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(AppSizes.width(2)), // 8
             image: DecorationImage(
               image: AssetImage(image),
               fit: BoxFit.cover,
             ),
           ),
         ),
-        const SizedBox(height: 4),
+        SizedBox(height: AppSizes.height(0.5)), // 4
         Text(
           name,
-          style:  TextStyle(fontSize: 12, color: AppColors.black),
+          style: TextStyle(
+            fontSize: AppSizes.font(1.5), // 12
+            color: AppColors.black,
+          ),
           textAlign: TextAlign.center,
         ),
       ],

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hotel_booking_app/common/widgets/elevatedbutton/elevated_button.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:hotel_booking_app/utils/constants/sizes.dart';
 
@@ -20,7 +19,7 @@ class HotelCard extends StatelessWidget {
   final double fontSize;
 
   const HotelCard({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.title,
     required this.rating,
@@ -32,7 +31,7 @@ class HotelCard extends StatelessWidget {
     this.minutes,
     this.onBookPressed,
     this.fontSize = 14,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

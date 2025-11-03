@@ -1,28 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/utils/constants/sizes.dart';
 
+import '../../../../../utils/device/device_utils.dart';
+
 class FilterButton extends StatelessWidget {
   final String label;
   final IconData icon;
   final VoidCallback onTap;
 
   const FilterButton({
-    Key? key,
+    super.key,
     required this.label,
     required this.icon,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(AppSizes.width(2)),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSizes.width(1),
+          vertical: AppSizes.height(.5),
+        ),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey.shade700),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(AppSizes.width(2)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -30,12 +35,12 @@ class FilterButton extends StatelessWidget {
             Text(
               label,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: AppSizes.font(1.5),
                 fontWeight: FontWeight.w500,
               ),
             ),
-            SizedBox(width: Sizes.xs),
-            Icon(icon, size: 18),
+            SizedBox(width: AppSizes.width(1.5)),
+            Icon(icon, size: AppSizes.icon(2)),
           ],
         ),
       ),

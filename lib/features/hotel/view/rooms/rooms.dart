@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:hotel_booking_app/common/widgets/elevatedbutton/elevated_button.dart';
 import 'package:hotel_booking_app/common/widgets/textfield/textfield.dart';
 import 'package:hotel_booking_app/core/routes.dart';
@@ -11,9 +11,9 @@ import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/places_and_h
 import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/tabbar.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:hotel_booking_app/utils/constants/images.dart';
-import 'package:hotel_booking_app/utils/constants/sizes.dart';
-
 import '../../../../common/widgets/dropdownfield/dropdownfield.dart';
+import '../../../../utils/device/device_utils.dart';
+import '../../viewmodel/findroom/room_tab_provider.dart';
 
 class RoomsScreen extends StatefulWidget {
   const RoomsScreen({super.key});
@@ -23,40 +23,38 @@ class RoomsScreen extends StatefulWidget {
 }
 
 class _RoomsScreenState extends State<RoomsScreen> {
-  int? selectedIndex;
-  DateTime? selectedDate;
 
   @override
   Widget build(BuildContext context) {
-    int selectedTab = 0;
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
         child: Column(
           children: [
-            CustomAppBar(title: 'Find Room',showBackArrow: false, showActions: true,),
+            const CustomAppBar(
+              title: 'Find Room',
+              showBackArrow: false,
+              showActions: true,
+            ),
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding: EdgeInsets.all(AppSizes.width(4)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomTabBar(
-                        tabs: ['Hotels', 'Villas',],
-                        selectedIndex: selectedTab,
-                        onTabSelected: (index) {
-                          setState(() {
-                            selectedTab = index;
-                          });
-                        },
+                      Consumer<RoomsProvider>(
+                        builder: (context, provider, _) => CustomTabBar(
+                          tabs: const ['Hotels', 'Villas'],
+                          selectedIndex: provider.selectedTab,
+                          onTabSelected: provider.setTab,
+                        ),
                       ),
-
-                      const SizedBox(height: 20),
+                      SizedBox(height: AppSizes.height(2.5)),
                       CustomDropdownField(
                         hintText: 'Where do you want',
                         prefixIcon: Icons.location_on,
-                        items: [
+                        items: const [
                           {'title': 'Abidjan', 'subtitle': 'Cote divoire'},
                           {
                             'title': 'Abids',
@@ -68,37 +66,32 @@ class _RoomsScreenState extends State<RoomsScreen> {
                           },
                         ],
                       ),
-
-                      const SizedBox(height: 12),
-                      CustomDatePicker(
-                        hintText: 'Check In Date & Time',
-                        initialDate: selectedDate,
-                        onDateSelected: (pickedDate) {
-                          setState(() {
-                            selectedDate = pickedDate;
-                          });
-                        },
+                      SizedBox(height: AppSizes.height(1.5)),
+                      Consumer<RoomsProvider>(
+                        builder: (context, provider, _) => CustomDatePicker(
+                          hintText: 'Check In Date & Time',
+                          initialDate: provider.selectedCheckInDate,
+                          onDateSelected: provider.setCheckInDate,
+                        ),
                       ),
-                      const SizedBox(height: 12),
-                      CustomDatePicker(
-                        hintText: 'Check Out Date & Time',
-                        initialDate: selectedDate,
-                        onDateSelected: (pickedDate) {
-                          setState(() {
-                            selectedDate = pickedDate;
-                          });
-                        },
+                      SizedBox(height: AppSizes.height(1.5)),
+                      Consumer<RoomsProvider>(
+                        builder: (context, provider, _) => CustomDatePicker(
+                          hintText: 'Check Out Date & Time',
+                          initialDate: provider.selectedCheckOutDate,
+                          onDateSelected: provider.setCheckOutDate,
+                        ),
                       ),
-                      const SizedBox(height: 12),
+                      SizedBox(height: AppSizes.height(1.5)),
                       CustomTextField(
                         hintText: '2 Adults.  2 Children.  1 room',
                         prefixIcon: Icons.people_outline,
                         hintTextColor: AppColors.black,
-                        fontSize: 18,
+                        fontSize: AppSizes.font(2.0),
                       ),
-                      const SizedBox(height: 25),
+                      SizedBox(height: AppSizes.height(3)),
                       AmenityRow(),
-                      const SizedBox(height: 25),
+                      SizedBox(height: AppSizes.height(3)),
                       SizedBox(
                         width: double.infinity,
                         child: CustomElevatedButton(
@@ -111,19 +104,18 @@ class _RoomsScreenState extends State<RoomsScreen> {
                             );
                           },
                           textColor: AppColors.white,
-                          borderRadius: 12,
+                          borderRadius: AppSizes.width(3),
                         ),
                       ),
-                      SizedBox(height: Sizes.xl),
+                      SizedBox(height: AppSizes.height(3.5)),
                       PlacesAndHotels('BEST PLACES', [
                         {'name': 'Ivory Coast', 'image': AppImages.ivory},
                         {'name': 'Senegal', 'image': AppImages.placeTwo},
                         {'name': 'Ville', 'image': AppImages.placeThree},
                       ]),
-
-                      SizedBox(height: Sizes.size20),
-                      Divider(color: const Color(0xffEBF1F5)),
-                       SizedBox(height: Sizes.size20),
+                      SizedBox(height: AppSizes.height(2)),
+                      const Divider(color: AppColors.dividerColor),
+                      SizedBox(height: AppSizes.height(2)),
                       PlacesAndHotels('BEST HOTELS', [
                         {'name': 'Headen Golf', 'image': AppImages.hotelOne},
                         {'name': 'Onomo', 'image': AppImages.hotelTwo},
@@ -137,7 +129,7 @@ class _RoomsScreenState extends State<RoomsScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

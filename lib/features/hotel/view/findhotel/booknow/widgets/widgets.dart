@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../../common/widgets/elevatedbutton/elevated_button.dart';
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/images.dart';
 import '../../../rooms/widgets/appbar.dart';

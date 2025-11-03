@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/features/authentication/view/signin/sign_in.dart';
 import 'package:hotel_booking_app/utils/constants/texts.dart';
-
 import '../../../../common/widgets/elevatedbutton/elevated_button.dart';
 import '../../../../common/widgets/textfield/textfield.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/device/device_utils.dart';
 import '../../viewmodel/verify_account_viewmodel.dart';
 
 class VerifyAccountScreen extends StatefulWidget {
@@ -24,98 +22,85 @@ class _VerifyAccountScreenState extends State<VerifyAccountScreen> {
     super.initState();
     _viewModel.startVerificationTimer(context, SignInScreen());
   }
+
   @override
   Widget build(BuildContext context) {
+    AppSizes.init(context);
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(gradient: AppColors.linerGradient),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(Sizes.defaultSpace / 1),
+            padding: EdgeInsets.all(AppSizes.width(4)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 50),
+                SizedBox(height: AppSizes.height(6)),
                 Text(
                   AppTexts.verifyAccount,
-                  style: Theme.of(context).textTheme.headlineMedium
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    fontSize: AppSizes.font(3),
+                  ),
                 ),
-                SizedBox(height: Sizes.size15),
+                SizedBox(height: AppSizes.height(2)),
 
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
                       color: AppColors.white,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(AppSizes.width(5)),
                     ),
-                    padding: EdgeInsets.all(Sizes.defaultSpace),
+                    padding: EdgeInsets.all(AppSizes.width(4)),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding:  EdgeInsets.all(Sizes.defaultSpace / 3),
+                          padding: EdgeInsets.all(AppSizes.width(2)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 AppTexts.verifyMobileNo,
-                                style: Theme.of(context).textTheme.headlineSmall
+                                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                  fontSize: AppSizes.font(2),
+                                ),
                               ),
-                              SizedBox(height: 12),
+                              SizedBox(height: AppSizes.height(1.5)),
                               Text(
                                 AppTexts.otpSent,
-                                style: Theme.of(context).textTheme.bodySmall
+                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                  fontSize: AppSizes.font(1.5),
+                                ),
                               ),
-                              SizedBox(height: 32),
+                              SizedBox(height: AppSizes.height(4)),
+
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  CustomTextField(
+                                children: List.generate(4, (_) => SizedBox(
+                                  width: AppSizes.width(12),
+                                  child: CustomTextField(
                                     hintText: '',
                                     maxLength: 1,
                                     textAlign: TextAlign.center,
                                     keyboardType: TextInputType.number,
                                     underLine: true,
-                                    fontSize: 24,
+                                    fontSize: AppSizes.font(2.5),
                                     fontWeight: FontWeight.w600,
                                   ),
-                                  CustomTextField(
-                                    hintText: '',
-                                    maxLength: 1,
-                                    textAlign: TextAlign.center,
-                                    keyboardType: TextInputType.number,
-                                    underLine: true,
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                  CustomTextField(
-                                    hintText: '',
-                                    maxLength: 1,
-                                    textAlign: TextAlign.center,
-                                    keyboardType: TextInputType.number,
-                                    underLine: true,
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                  CustomTextField(
-                                    hintText: '',
-                                    maxLength: 1,
-                                    textAlign: TextAlign.center,
-                                    keyboardType: TextInputType.number,
-                                    underLine: true,
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ],
+                                )),
                               ),
-                              SizedBox(height: 24),
+
+                              SizedBox(height: AppSizes.height(3)),
                               Center(
                                 child: Text(
                                   AppTexts.didntRecieveOtp,
-                                  style: Theme.of(context).textTheme.bodySmall
+                                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    fontSize: AppSizes.font(1.5),
+                                  ),
                                 ),
                               ),
-                              SizedBox(height: 16),
+                              SizedBox(height: AppSizes.height(2)),
                               Row(
                                 children: [
                                   Expanded(
@@ -123,20 +108,20 @@ class _VerifyAccountScreenState extends State<VerifyAccountScreen> {
                                       text: AppTexts.resend,
                                       backgroundColor: AppColors.green,
                                       textColor: Colors.white,
-                                      fontSize: 16,
+                                      fontSize: AppSizes.font(1.8),
                                       onPressed: () {},
-                                      borderRadius: 12,
+                                      borderRadius: AppSizes.width(3),
                                     ),
                                   ),
-                                  SizedBox(width: 12),
+                                  SizedBox(width: AppSizes.width(3)),
                                   Expanded(
                                     child: CustomElevatedButton(
                                       text: AppTexts.changeNumber,
                                       backgroundColor: AppColors.blue,
                                       textColor: Colors.white,
-                                      fontSize: 16,
+                                      fontSize: AppSizes.font(1.8),
                                       onPressed: () {},
-                                      borderRadius: 12,
+                                      borderRadius: AppSizes.width(3),
                                     ),
                                   ),
                                 ],
@@ -155,5 +140,4 @@ class _VerifyAccountScreenState extends State<VerifyAccountScreen> {
       ),
     );
   }
-
 }

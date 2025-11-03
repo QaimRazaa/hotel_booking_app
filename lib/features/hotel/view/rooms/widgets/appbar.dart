@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking_app/utils/constants/images.dart';
+import '../../../../../utils/device/device_utils.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -7,7 +9,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showActions;
   final VoidCallback? onBackPressed;
   final List<Widget>? actions;
-  final Color titleColor; // 👈 new: customizable title color
+  final Color titleColor;
 
   const CustomAppBar({
     super.key,
@@ -16,17 +18,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showActions = true,
     this.onBackPressed,
     this.actions,
-    this.titleColor = Colors.black, // 👈 default color
+    this.titleColor = Colors.black,
   });
 
   @override
   Widget build(BuildContext context) {
+    AppSizes.init(context);
+
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSizes.width(4),
+        vertical: AppSizes.height(1.5),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // 🔙 Back Arrow + Title
           Row(
             children: [
               if (showBackArrow)
@@ -37,24 +43,22 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               Text(
                 title,
                 style: GoogleFonts.roboto(
-                  fontSize: 24,
+                  fontSize: AppSizes.font(2.4),
                   fontWeight: FontWeight.w500,
-                  color: titleColor, // 👈 applied here
+                  color: titleColor,
                 ),
               ),
             ],
           ),
-
-          // 🎛️ Reusable Actions Row
           if (showActions)
             Row(
               children: actions ??
                   [
                     const _CustomChip(label: 'Stay', selected: false),
-                    const SizedBox(width: 8),
+                    SizedBox(width: AppSizes.width(2)),
                     const _CustomChip(label: 'Pass', selected: true),
-                    const SizedBox(width: 8),
-                    const Icon(Icons.filter_list, color: Colors.blue),
+                    SizedBox(width: AppSizes.width(2)),
+                    Image(image: AssetImage(AppImages.moreIcon)),
                   ],
             ),
         ],
@@ -63,7 +67,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => Size.fromHeight(AppSizes.height(7));
 }
 
 class _CustomChip extends StatelessWidget {
@@ -75,16 +79,19 @@ class _CustomChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSizes.width(3),
+        vertical: AppSizes.height(0.6),
+      ),
       decoration: BoxDecoration(
         color: selected ? Colors.green : Colors.grey.shade200,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: AppSizes.borderRadius(2),
       ),
       child: Text(
         label,
         style: TextStyle(
           color: selected ? Colors.white : Colors.black,
-          fontSize: 12,
+          fontSize: AppSizes.font(1.2),
         ),
       ),
     );

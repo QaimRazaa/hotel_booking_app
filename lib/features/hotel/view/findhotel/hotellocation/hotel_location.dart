@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart'; // <-- add this
 
 import '../../../../../common/widgets/searchfield/searchField.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/images.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../../../viewmodel/amenity_provider.dart';
 import '../../rooms/widgets/navbar.dart';
 import '../widgets/amenities_sheet.dart';
 import '../widgets/appbar.dart';
@@ -18,7 +20,6 @@ class HotelLocationScreen extends StatefulWidget {
 }
 
 class _HotelLocationScreenState extends State<HotelLocationScreen> {
-  Set<String> selectedAmenities = {};
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class _HotelLocationScreenState extends State<HotelLocationScreen> {
       body: Column(
         children: [
           Padding(
-            padding: EdgeInsets.all(Sizes.defaultSpace),
+            padding: EdgeInsets.only(left: Sizes.defaultSpace, right: Sizes.defaultSpace, bottom: Sizes.defaultSpace),
             child: Column(
               children: [
                 CustomSearchField(
@@ -45,9 +46,12 @@ class _HotelLocationScreenState extends State<HotelLocationScreen> {
                   children: [
                     Expanded(
                       child: FilterButton(
-                        label: 'Amenities',
+                        // Show selected amenities if any
+                        label: context.watch<AmenitiesProvider>().selectedAmenities.isEmpty
+                            ? 'Amenities'
+                            : context.watch<AmenitiesProvider>().selectedAmenities.join(', '),
                         icon: Icons.keyboard_arrow_down,
-                        onTap: () => _showAmenitiesSheet(),
+                        onTap: _showAmenitiesSheet,
                       ),
                     ),
                     SizedBox(width: 12),
@@ -81,7 +85,6 @@ class _HotelLocationScreenState extends State<HotelLocationScreen> {
                     fit: BoxFit.cover,
                   ),
                 ),
-
                 Center(
                   child: IntrinsicWidth(
                     child: IntrinsicHeight(
@@ -100,9 +103,7 @@ class _HotelLocationScreenState extends State<HotelLocationScreen> {
                 ),
               ],
             ),
-          )
-
-
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavBar(),
@@ -110,12 +111,6 @@ class _HotelLocationScreenState extends State<HotelLocationScreen> {
   }
 
   void _showAmenitiesSheet() {
-    AmenitiesBottomSheet.show(
-      context,
-      selectedAmenities: selectedAmenities,
-      onUpdate: () {
-        setState(() {});
-      },
-    );
+    AmenitiesBottomSheet.show(context); // Provider handles state
   }
 }

@@ -8,11 +8,11 @@ class CustomDropdownField extends StatefulWidget {
   final List<Map<String, String>> items;
 
   const CustomDropdownField({
-    Key? key,
+    super.key,
     required this.hintText,
     this.prefixIcon,
     required this.items,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomDropdownField> createState() => _CustomDropdownFieldState();
@@ -27,7 +27,7 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
       height: 58,
       alignment: Alignment.center,
       child: DropdownButtonFormField<Map<String, String>>(
-        value: selectedValue,
+        initialValue: selectedValue,
         isExpanded: true,
         dropdownColor: Colors.white,
         icon: const Icon(Icons.keyboard_arrow_down_rounded, color: Colors.grey, size: 26),
