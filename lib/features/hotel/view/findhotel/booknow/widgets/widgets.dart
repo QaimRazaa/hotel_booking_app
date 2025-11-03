@@ -8,41 +8,94 @@ import '../../../rooms/widgets/appbar.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;
+  final String? subTitle;
   final double fontSize;
   final FontWeight fontWeight;
   final Color? color;
+  final Color? subTitleColor;
   final double letterSpacing;
   final TextAlign textAlign;
 
   const SectionTitle({
     super.key,
     required this.title,
+     this.subTitle,
     this.fontSize = 14,
     this.fontWeight = FontWeight.w400,
     this.color,
+    this.subTitleColor,
     this.letterSpacing = 0.5,
     this.textAlign = TextAlign.start,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      textAlign: textAlign,
-      style: GoogleFonts.roboto(
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        color: color ?? Colors.black,
-        letterSpacing: letterSpacing,
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          textAlign: textAlign,
+          style: GoogleFonts.roboto(
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            color: color ?? Colors.black,
+            letterSpacing: letterSpacing,
+          ),
+        ),
+        if(subTitle != null)
+        Text(
+          subTitle!,
+          textAlign: textAlign,
+          style: GoogleFonts.roboto(
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            color: subTitleColor ?? Colors.black,
+            letterSpacing: letterSpacing,
+          ),
+        ),
+      ],
     );
   }
 }
 
 class InfoChipGrid extends StatelessWidget {
   final List<Map<String, String>> chips;
+  final int crossAxisCount;
+  final double mainAxisSpacing;
+  final double crossAxisSpacing;
+  final double childAspectRatio;
+  final double iconSize;
+  final double fontSize;
+  final FontWeight fontWeight;
+  final Color backgroundColor;
+  final Color? iconColor;
+  final Color textColor;
+  final double horizontalPadding;
+  final double verticalPadding;
+  final double iconTextSpacing;
+  final double borderRadius;
+  final bool showText; // Add this
 
-  const InfoChipGrid({super.key, required this.chips});
+  const InfoChipGrid({
+    super.key,
+    required this.chips,
+    this.crossAxisCount = 3,
+    this.mainAxisSpacing = 6,
+    this.crossAxisSpacing = 6,
+    this.childAspectRatio = 3.0,
+    this.iconSize = 22,
+    this.fontSize = 12,
+    this.fontWeight = FontWeight.w300,
+    this.backgroundColor = Colors.white,
+    this.iconColor,
+    this.textColor = Colors.black,
+    this.horizontalPadding = 8,
+    this.verticalPadding = 4,
+    this.iconTextSpacing = 4,
+    this.borderRadius = 6,
+    this.showText = true, // Add this
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,46 +103,53 @@ class InfoChipGrid extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       padding: EdgeInsets.zero,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        mainAxisSpacing: 6,
-        crossAxisSpacing: 6,
-        childAspectRatio: 3.0,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        mainAxisSpacing: mainAxisSpacing,
+        crossAxisSpacing: crossAxisSpacing,
+        childAspectRatio: childAspectRatio,
       ),
       itemCount: chips.length,
       itemBuilder: (context, index) {
-        return _buildInfoChip(chips[index]['asset']!, chips[index]['text']!);
-      },
-    );
-  }
+        final text = chips[index]['text'];
 
-  Widget _buildInfoChip(String assetPath, String text) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
-            assetPath,
-            width: 22,
-            height: 22,
-            color: AppColors.primary,
-            fit: BoxFit.contain,
+        return Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: horizontalPadding,
+            vertical: verticalPadding,
           ),
-          const SizedBox(width: 4),
-          Flexible(
-            child: Text(
-              text,
-              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w300, color: Colors.black),
-              overflow: TextOverflow.ellipsis,
-            ),
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(borderRadius),
           ),
-        ],
-      ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                chips[index]['asset']!,
+                width: iconSize,
+                height: iconSize,
+                color: iconColor,
+                fit: BoxFit.cover,
+              ),
+              if (showText && text != null) ...[
+                SizedBox(width: iconTextSpacing),
+                Flexible(
+                  child: Text(
+                    text,
+                    style: TextStyle(
+                      fontSize: fontSize,
+                      fontWeight: fontWeight,
+                      color: textColor,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ],
+          ),
+        );
+      },
     );
   }
 }
@@ -345,6 +405,53 @@ class FoodCardWidget extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class ImageTextRow extends StatelessWidget {
+  final String assetPath;
+  final String text;
+  final double imageSize;
+  final Color? imageColor;
+  final double fontSize;
+  final FontWeight fontWeight;
+  final Color textColor;
+  final double spacing;
+
+  const ImageTextRow({
+    super.key,
+    required this.assetPath,
+    required this.text,
+    this.imageSize = 24,
+    this.imageColor,
+    this.fontSize = 14,
+    this.fontWeight = FontWeight.w400,
+    this.textColor = AppColors.black,
+    this.spacing = 20,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Image.asset(
+          assetPath,
+          width: imageSize,
+          height: imageSize,
+          color: imageColor,
+          fit: BoxFit.contain,
+        ),
+        SizedBox(width: spacing),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            color: textColor,
+          ),
+        ),
+      ],
     );
   }
 }

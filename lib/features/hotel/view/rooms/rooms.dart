@@ -11,6 +11,7 @@ import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/places_and_h
 import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/tabbar.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:hotel_booking_app/utils/constants/images.dart';
+import 'package:hotel_booking_app/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/dropdownfield/dropdownfield.dart';
 
@@ -113,16 +114,16 @@ class _RoomsScreenState extends State<RoomsScreen> {
                           borderRadius: 12,
                         ),
                       ),
-                      const SizedBox(height: 30),
+                      SizedBox(height: Sizes.xl),
                       PlacesAndHotels('BEST PLACES', [
                         {'name': 'Ivory Coast', 'image': AppImages.ivory},
                         {'name': 'Senegal', 'image': AppImages.placeTwo},
                         {'name': 'Ville', 'image': AppImages.placeThree},
                       ]),
 
-                      const SizedBox(height: 20),
-                      Divider(),
-                      const SizedBox(height: 20),
+                      SizedBox(height: Sizes.size20),
+                      Divider(color: const Color(0xffEBF1F5)),
+                       SizedBox(height: Sizes.size20),
                       PlacesAndHotels('BEST HOTELS', [
                         {'name': 'Headen Golf', 'image': AppImages.hotelOne},
                         {'name': 'Onomo', 'image': AppImages.hotelTwo},

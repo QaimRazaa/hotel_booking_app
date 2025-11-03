@@ -3,6 +3,8 @@ class AppImages {
   static String ivory = "assets/images/ivorycoast.jpg";
   static String placeTwo = "assets/images/senegal.png";
   static String placeThree = "assets/images/ville.jpg";
+  static String placeFour = "assets/images/places/stpaul.jpg";
+  static String placeFive = "assets/images/places/bancopark.jpg";
 
   static String hotelOne = "assets/images/hotels/hotelone.jpg";
   static String hotelTwo = "assets/images/hotels/hoteltwo.jpg";
@@ -18,10 +20,27 @@ class AppImages {
   static const String fitnessIcon = "assets/images/icons/fitnessicon.png";
   static const String kidFriendlyIcon = "assets/images/icons/kidfriendlyicon.png";
   static const String wifiIcon = "assets/images/icons/wifiicon.png";
+  static const String cameraIcon = "assets/images/icons/camera.png";
+  static const String planeIcon = "assets/images/icons/plane.png";
+  static const String subwayIcon = "assets/images/icons/subway.png";
 
 
   static const String foodOne = "assets/images/food/foodone.jpg";
   static const String foodTwo = "assets/images/food/foodtwo.jpg";
   static const String foodThree = "assets/images/food/foodthree.jpg";
   static const String foodFour = "assets/images/food/foodfour.jpg";
+
+
+  static const String hedenGolfHotel = "assets/images/hedengolf/hedengolfhotel.png";
+  static const String hedenGolfHotelOne = "assets/images/hedengolf/hedengolfhotelone.jpg";
+  static const String hedenGolfHotelTwo = "assets/images/hedengolf/hedengolfhoteltwo.jpg";
+  static const String hedenGolfHotelThree = "assets/images/hedengolf/hedengolfhotelthree.jpg";
+  static const String hedenGolfHotelFour = "assets/images/hedengolf/hedengolfhotelfour.jpg";
+  static const String hedenGolfHotelFive = "assets/images/hedengolf/hedengolfhotelfive.jpg";
+  static const String hedenGolfHotelSix = "assets/images/hedengolf/hedengolfhotelsix.jpg";
+  static const String hedenGolfHotelSeven = "assets/images/hedengolf/hedengolfhotelseven.jpg";
+  static const String hedenGolfHotelEight = "assets/images/hedengolf/hedengolfhoteleight.jpg";
+  static const String hedenGolfHotelNine = "assets/images/hedengolf/hedengolfhotelnine.png";
+  static const String hedenGolfHotelTen = "assets/images/hedengolf/hedengolfhotelten.jpg";
+  static const String hedenGolfHotelEleven = "assets/images/hedengolf/hedengolfhoteleleven.jpg";
 }

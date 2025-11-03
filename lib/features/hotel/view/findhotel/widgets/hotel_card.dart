@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hotel_booking_app/common/widgets/elevatedbutton/small_elevated_button.dart';
+import 'package:hotel_booking_app/common/widgets/elevatedbutton/elevated_button.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:hotel_booking_app/utils/constants/sizes.dart';
+
+import '../../../../../common/widgets/elevatedbutton/small_elevated_button.dart';
 
 class HotelCard extends StatelessWidget {
   final String imageUrl;
@@ -11,8 +13,11 @@ class HotelCard extends StatelessWidget {
   final int reviewCount;
   final String description;
   final String discount;
-  final int price;
-  final VoidCallback onBookPressed;
+  final int? price; // ✅ optional
+  final String? distance; // ✅ optional
+  final String? minutes; // ✅ optional
+  final VoidCallback? onBookPressed;
+  final double fontSize;
 
   const HotelCard({
     Key? key,
@@ -22,8 +27,11 @@ class HotelCard extends StatelessWidget {
     required this.reviewCount,
     required this.description,
     required this.discount,
-    required this.price,
-    required this.onBookPressed,
+    this.price,
+    this.distance,
+    this.minutes,
+    this.onBookPressed,
+    this.fontSize = 14,
   }) : super(key: key);
 
   @override
@@ -31,7 +39,7 @@ class HotelCard extends StatelessWidget {
     return Center(
       child: Container(
         width: MediaQuery.of(context).size.width * 0.85,
-        margin:  EdgeInsets.symmetric(vertical: 8),
+        margin: const EdgeInsets.symmetric(vertical: 8),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -44,7 +52,7 @@ class HotelCard extends StatelessWidget {
           ],
         ),
         child: Padding(
-          padding:  EdgeInsets.only(left: 8),
+          padding: const EdgeInsets.only(left: 8),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -53,7 +61,7 @@ class HotelCard extends StatelessWidget {
                 child: Image.asset(
                   imageUrl,
                   width: 90,
-                  height: 100,
+                  height: fontSize > 14 ? 120 : 100, // ✅ adaptive height
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
@@ -73,18 +81,16 @@ class HotelCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Title
                       Text(
                         title,
-                        style: const TextStyle(
-                          fontSize: 15,
+                        style: TextStyle(
+                          fontSize: fontSize + 1,
                           fontWeight: FontWeight.w600,
                           color: Colors.black,
                         ),
                       ),
                       const SizedBox(height: 4),
 
-                      // Rating
                       Row(
                         children: [
                           const Icon(Icons.star, size: 16, color: Colors.orange),
@@ -112,7 +118,7 @@ class HotelCard extends StatelessWidget {
 
                       Text(
                         description,
-                        maxLines: 1,
+                        maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.roboto(
                           fontWeight: FontWeight.w300,
@@ -136,19 +142,23 @@ class HotelCard extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(width: 8),
-                              Text(
-                                '\$$price',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.black,
+                              if (price != null)
+                                Text(
+                                  '\$$price',
+                                  style: TextStyle(
+                                    fontSize: fontSize,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.black,
+                                  ),
                                 ),
-                              ),
                             ],
                           ),
-                          SmallElevatedButton(
+
+                          // ✅ Conditional column (distance/minutes OR Book button)
+                          onBookPressed != null
+                              ? SmallElevatedButton(
                             text: "Book Now",
-                            onPressed: onBookPressed,
+                            onPressed: onBookPressed!,
                             gradient: AppColors.linerGradient3,
                             width: 95,
                             height: 32,
@@ -157,6 +167,29 @@ class HotelCard extends StatelessWidget {
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
                             ),
+                          )
+                              : Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              if (distance != null)
+                                Text(
+                                  distance!,
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                              if (minutes != null)
+                                Text(
+                                  minutes!,
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                            ],
                           ),
                         ],
                       ),

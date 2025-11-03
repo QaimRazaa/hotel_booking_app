@@ -31,46 +31,46 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
       ),
       body: Padding(
         padding: EdgeInsets.all(Sizes.defaultSpace),
-        child: Column(
-          children: [
-            CustomSearchField(
-              hintText: 'Search',
-              prefixIcon: Icons.search,
-              onChanged: (query) {},
-            ),
-            SizedBox(height: 16),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              CustomSearchField(
+                hintText: 'Search',
+                prefixIcon: Icons.search,
+                onChanged: (query) {},
+              ),
+              SizedBox(height: 16),
 
-            Row(
-              children: [
-                Expanded(
-                  child: FilterButton(
-                    label: 'Amenities',
-                    icon: Icons.keyboard_arrow_down,
-                    onTap: () => _showAmenitiesSheet(),
+              Row(
+                children: [
+                  Expanded(
+                    child: FilterButton(
+                      label: 'Amenities',
+                      icon: Icons.keyboard_arrow_down,
+                      onTap: () => _showAmenitiesSheet(),
+                    ),
                   ),
-                ),
-                SizedBox(width: 12),
-                Expanded(
-                  child: FilterButton(
-                    label: 'Filter by',
-                    icon: Icons.keyboard_arrow_down,
-                    onTap: () {},
+                  SizedBox(width: 12),
+                  Expanded(
+                    child: FilterButton(
+                      label: 'Filter by',
+                      icon: Icons.keyboard_arrow_down,
+                      onTap: () {},
+                    ),
                   ),
-                ),
-                SizedBox(width: 12),
-                Expanded(
-                  child: FilterButton(
-                    label: 'Sort by',
-                    icon: Icons.keyboard_arrow_down,
-                    onTap: () {},
+                  SizedBox(width: 12),
+                  Expanded(
+                    child: FilterButton(
+                      label: 'Sort by',
+                      icon: Icons.keyboard_arrow_down,
+                      onTap: () {},
+                    ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: Sizes.size15),
+                ],
+              ),
+              SizedBox(height: Sizes.size15),
 
-            SingleChildScrollView(
-              child: Column(
+              Column(
                 children: [
                   HotelCard(
                     imageUrl: AppImages.hotelOne,
@@ -119,8 +119,8 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavBar(),

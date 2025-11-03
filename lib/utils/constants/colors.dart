@@ -35,7 +35,7 @@ class AppColors{
   static Color warning = Color(0xFFf57c00);
   static Color info = Color(0xFF1976d2);
 
-  static Color black = Colors.black;
+  static const Color black = Colors.black;
   static Color darkerGrey = Color(0xFF4f4f4f);
   static Color darkGrey = Color(0xFF939393);
   static Color grey = Color(0xff8E929B);
@@ -43,6 +43,9 @@ class AppColors{
   static Color lightGrey = Color(0xFFf9f9f9);
   static const Color white = Color(0xFFffffff);
   static const Color lightWhite = Color(0xffE0E8ED);
+
+
+  static const Color dividerColor = Color(0xffEBF1F5);
 
   static const Gradient linerGradient =LinearGradient(
     begin: Alignment.topCenter,
