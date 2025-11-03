@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animations/animations.dart'; // 👈 Add this
 import 'package:hotel_booking_app/features/authentication/view/forgot_password/forgot_password.dart';
 import 'package:hotel_booking_app/features/authentication/view/signin/sign_in.dart';
 import 'package:hotel_booking_app/features/authentication/view/signup/signup.dart';
@@ -7,37 +8,7 @@ import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/book_now
 import 'package:hotel_booking_app/features/hotel/view/findhotel/findhotel.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/hotellocation/hotel_location.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/rooms.dart';
-
 import '../features/splash/view/splash_screen.dart';
-
-Route<dynamic> generateRoute(RouteSettings settings) {
-  switch (settings.name) {
-    case AppRoutes.splashSplashScreen:
-      return MaterialPageRoute(builder: (_) => const SplashScreen());
-    case AppRoutes.signUpScreen:
-      return MaterialPageRoute(builder: (_) => const SignupScreen());
-    case AppRoutes.verifyAccountScreen:
-      return MaterialPageRoute(builder: (_) => const VerifyAccountScreen());
-    case AppRoutes.signInScreen:
-      return MaterialPageRoute(builder: (_) => const SignInScreen());
-    case AppRoutes.forgotPasswordScreen:
-      return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
-    case AppRoutes.roomScreen:
-      return MaterialPageRoute(builder: (_) => const RoomsScreen());
-      case AppRoutes.findHotelScreen:
-      return MaterialPageRoute(builder: (_) => const FindHotelScreen());
-      case AppRoutes.hotelLocationScreen:
-      return MaterialPageRoute(builder: (_) => const HotelLocationScreen());
-      case AppRoutes.bookNowScreen:
-      return MaterialPageRoute(builder: (_) => const BookNowScreen());
-    default:
-      return MaterialPageRoute(
-        builder: (_) => const Scaffold(
-          body: Center(child: Text("No route found")),
-        ),
-      );
-  }
-}
 
 class AppRoutes {
   static const String splashSplashScreen = '/';
@@ -50,3 +21,70 @@ class AppRoutes {
   static const String hotelLocationScreen = 'HotelLocationScreen';
   static const String bookNowScreen = 'BookNowScreen';
 }
+
+Route<dynamic> generateRoute(RouteSettings settings) {
+  switch (settings.name) {
+    case AppRoutes.splashSplashScreen:
+      return _buildAnimatedRoute(const SplashScreen());
+
+    case AppRoutes.signUpScreen:
+      return _buildAnimatedRoute(const SignupScreen());
+
+    case AppRoutes.verifyAccountScreen:
+      return _buildAnimatedRoute(const VerifyAccountScreen());
+
+    case AppRoutes.signInScreen:
+      return _buildAnimatedRoute(const SignInScreen());
+
+    case AppRoutes.forgotPasswordScreen:
+      return _buildAnimatedRoute(const ForgotPasswordScreen());
+
+    case AppRoutes.roomScreen:
+      return _buildAnimatedRoute(const RoomsScreen());
+
+    case AppRoutes.findHotelScreen:
+      return _buildAnimatedRoute(const FindHotelScreen());
+
+    case AppRoutes.hotelLocationScreen:
+      return _buildAnimatedRoute(const HotelLocationScreen());
+
+    case AppRoutes.bookNowScreen:
+      return _buildAnimatedRoute(const BookNowScreen());
+
+    default:
+      return _buildAnimatedRoute(
+        const Scaffold(
+          body: Center(child: Text("No route found")),
+        ),
+      );
+  }
+}
+
+PageRouteBuilder _buildAnimatedRoute(Widget page) {
+  return PageRouteBuilder(
+    transitionDuration: const Duration(milliseconds: 700),
+    reverseTransitionDuration: const Duration(milliseconds: 500),
+    pageBuilder: (_, animation, secondaryAnimation) => page,
+    transitionsBuilder: (_, animation, secondaryAnimation, child) {
+      // Slide from right with fade
+      const begin = Offset(1.0, 0.0);
+      const end = Offset.zero;
+      const curve = Curves.easeInOutCubic;
+
+      var slideTween = Tween(begin: begin, end: end).chain(
+        CurveTween(curve: curve),
+      );
+
+      var fadeTween = Tween<double>(begin: 0.0, end: 1.0);
+
+      return SlideTransition(
+        position: animation.drive(slideTween),
+        child: FadeTransition(
+          opacity: animation.drive(fadeTween),
+          child: child,
+        ),
+      );
+    },
+  );
+}
+

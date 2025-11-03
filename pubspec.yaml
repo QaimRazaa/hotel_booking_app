@@ -38,6 +38,7 @@ dependencies:
   iconsax:
   fl_chart: ^0.68.0
   pie_chart: ^5.4.0
+  animations: ^2.1.0
 
 dev_dependencies:
   flutter_test:

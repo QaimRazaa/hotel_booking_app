@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/features/authentication/view/signup/signup.dart';
+import 'package:hotel_booking_app/core/routes.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:hotel_booking_app/utils/constants/images.dart';
 import 'package:hotel_booking_app/utils/constants/texts.dart';
-
 import '../../../utils/constants/sizes.dart';
 import '../viewmodel/splash_view_model.dart';
 
@@ -20,7 +19,16 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _viewModel.startSplashScreenTimer(context, SignupScreen());
+    // Use route name instead of widget
+    _startTimer();
+  }
+
+  void _startTimer() {
+    Future.delayed(const Duration(seconds: 3), () {
+      if (mounted) {
+        Navigator.pushReplacementNamed(context, AppRoutes.signUpScreen);
+      }
+    });
   }
 
   @override
@@ -48,7 +56,6 @@ class _SplashScreenState extends State<SplashScreen> {
                           width: size.width * 1.2,
                         ),
                       ),
-
                       Positioned(
                         bottom: 80,
                         child: Stack(
@@ -60,7 +67,6 @@ class _SplashScreenState extends State<SplashScreen> {
                               height: 110,
                               fit: BoxFit.contain,
                             ),
-
                             Positioned(
                               top: 28,
                               child: Container(
@@ -78,7 +84,6 @@ class _SplashScreenState extends State<SplashScreen> {
                     ],
                   ),
                 ),
-
                 Text(
                   AppTexts.findHotel,
                   style: Theme.of(context).textTheme.headlineLarge?.copyWith(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/utils/constants/sizes.dart';
 
 class FilterButton extends StatelessWidget {
   final String label;
@@ -20,7 +21,7 @@ class FilterButton extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey.shade300),
+          border: Border.all(color: Colors.grey.shade700),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
@@ -33,7 +34,7 @@ class FilterButton extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            SizedBox(width: 4),
+            SizedBox(width: Sizes.xs),
             Icon(icon, size: 18),
           ],
         ),
