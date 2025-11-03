@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/utils/constants/sizes.dart';
 
 import '../../../../../utils/device/device_utils.dart';
 

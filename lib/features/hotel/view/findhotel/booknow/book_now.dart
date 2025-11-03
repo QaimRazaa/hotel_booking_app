@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/core/routes.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/widgets/nearbytab/near_by.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/widgets/photostab/photos.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/widgets/reviewtab/reviews.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/widgets/widgets.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/tabbar.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
-import 'package:hotel_booking_app/utils/constants/sizes.dart';
 import 'package:provider/provider.dart';
 import '../../../../../common/widgets/bookingnavbar/booking_nav_bar.dart';
 import '../../../../../utils/device/device_utils.dart';
@@ -21,7 +21,6 @@ class BookNowScreen extends StatefulWidget {
 class _BookNowScreenState extends State<BookNowScreen> {
   @override
   Widget build(BuildContext context) {
-    AppSizes.init(context);
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -74,7 +73,7 @@ class _BookNowScreenState extends State<BookNowScreen> {
             subtitle: 'AVG/NIGHT',
             buttonText: 'BOOK NOW',
             gradient: AppColors.linerGradient3,
-            onPressed: () {},
+            onPressed: () {Navigator.pushNamed(context, AppRoutes.orderConfirmScreen);},
           ),
         );
       },

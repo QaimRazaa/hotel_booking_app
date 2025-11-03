@@ -26,6 +26,12 @@ class AppImages {
   static const String moreIcon = "assets/images/icons/moreicon.png";
 
 
+  static const String card = "assets/images/cardimage.png";
+  static const String paymentOne = "assets/images/card/paymentone.jpg";
+  static const String paymentTwo = "assets/images/card/paymenttwo.jpg";
+  static const String paymentThree = "assets/images/card/paymentthree.png";
+
+
   static const String foodOne = "assets/images/food/foodone.jpg";
   static const String foodTwo = "assets/images/food/foodtwo.jpg";
   static const String foodThree = "assets/images/food/foodthree.jpg";

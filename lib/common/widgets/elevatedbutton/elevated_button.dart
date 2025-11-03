@@ -9,6 +9,8 @@ class CustomElevatedButton extends StatelessWidget {
   final VoidCallback onPressed;
   final double borderRadius;
   final EdgeInsetsGeometry? padding;
+  final double? width;
+  final double? height;
 
   const CustomElevatedButton({
     super.key,
@@ -20,11 +22,15 @@ class CustomElevatedButton extends StatelessWidget {
     this.fontSize = 16,
     this.borderRadius = 25,
     this.padding,
+    this.width,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: width,
+      height: height,
       decoration: BoxDecoration(
         gradient: gradient,
         color: backgroundColor,

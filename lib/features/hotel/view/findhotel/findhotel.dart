@@ -35,7 +35,7 @@ class _FindHotelScreenState extends State<FindHotelScreen> {
         },
       ),
       body: Padding(
-        padding: EdgeInsets.all(Sizes.defaultSpace),
+        padding: EdgeInsets.all(Sizes.defaultSpace / 1.5),
         child: SingleChildScrollView(
           child: Column(
             children: [

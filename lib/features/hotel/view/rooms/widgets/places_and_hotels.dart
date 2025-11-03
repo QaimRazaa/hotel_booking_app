@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../../../utils/constants/colors.dart';
-import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/device/device_utils.dart';
 
 Widget PlacesAndHotels(String title, List<Map<String, String>> items) {

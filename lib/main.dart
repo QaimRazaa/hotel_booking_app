@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/features/hotel/viewmodel/findroom/dropdown_provider.dart';
 import 'package:hotel_booking_app/features/hotel/viewmodel/findroom/room_tab_provider.dart';
 import 'package:provider/provider.dart';
 import 'app.dart';
@@ -12,6 +13,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => AmenitiesProvider()),
         ChangeNotifierProvider(create: (_) => TabProvider()),
         ChangeNotifierProvider(create: (_) => RoomsProvider()),
+        ChangeNotifierProvider(create: (_) => DropdownProvider()),
       ],
       child: const MyApp(),
     ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/device/device_utils.dart';
 
 class CustomTabBar extends StatelessWidget {
@@ -27,7 +26,7 @@ class CustomTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppSizes.height(5), // 40 original
+      height: AppSizes.height(4.5), // 40 original
       decoration: BoxDecoration(
         color: inactiveColor,
         border: Border.all(color: borderColor, width: AppSizes.width(0.5)), // 2

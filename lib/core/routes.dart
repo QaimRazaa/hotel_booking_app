@@ -7,6 +7,8 @@ import 'package:hotel_booking_app/features/authentication/view/signup/verify_acc
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/book_now.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/findhotel.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/hotellocation/hotel_location.dart';
+import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/order_confirm.dart';
+import 'package:hotel_booking_app/features/hotel/view/findhotel/paymentmethod/payment_method.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/rooms.dart';
 import '../features/splash/view/splash_screen.dart';
 
@@ -20,6 +22,8 @@ class AppRoutes {
   static const String findHotelScreen = 'FindHotelScreen';
   static const String hotelLocationScreen = 'HotelLocationScreen';
   static const String bookNowScreen = 'BookNowScreen';
+  static const String orderConfirmScreen = 'OrderConfirmScreen';
+  static const String paymentMethodScreen = 'PaymentMethodScreen';
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -50,6 +54,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     case AppRoutes.bookNowScreen:
       return _buildAnimatedRoute(const BookNowScreen());
+
+      case AppRoutes.orderConfirmScreen:
+      return _buildAnimatedRoute(const OrderConfirm());
+
+      case AppRoutes.paymentMethodScreen:
+      return _buildAnimatedRoute(const PaymentMethod());
 
     default:
       return _buildAnimatedRoute(

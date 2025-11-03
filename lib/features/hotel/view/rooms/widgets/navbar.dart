@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hotel_booking_app/core/routes.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
-import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
@@ -12,7 +11,6 @@ class BottomNavBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
         gradient: AppColors.linerGradient3,
-        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(25)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,

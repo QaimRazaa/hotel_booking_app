@@ -8,18 +8,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
+    return MaterialApp(
+      title: 'Hotel Booking App',
+      debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.light,
+      theme: CustomAppTheme.lightTheme,
+      initialRoute: AppRoutes.splashSplashScreen,
+      onGenerateRoute: generateRoute,
+      builder: (context, child) {
         AppSizes.init(context);
-
-        return MaterialApp(
-          title: 'Hotel Booking App',
-          debugShowCheckedModeBanner: false,
-          themeMode: ThemeMode.light,
-          theme: CustomAppTheme.lightTheme,
-          initialRoute: AppRoutes.splashSplashScreen,
-          onGenerateRoute: generateRoute,
-        );
+        return child ?? const SizedBox.shrink();
       },
     );
   }
