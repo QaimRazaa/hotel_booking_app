@@ -13,6 +13,7 @@ class AppImages {
 
   static const String backgroundOne = "assets/background/bgone.png";
   static const String locationIcon = "assets/background/Rectangle.png";
+  static const String backgroundTwo = "assets/background/backgroundtwo.jpg";
 
   static const String map = "assets/images/map.png";
 

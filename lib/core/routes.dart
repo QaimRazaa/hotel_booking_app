@@ -8,6 +8,7 @@ import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/book_now
 import 'package:hotel_booking_app/features/hotel/view/findhotel/findhotel.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/hotellocation/hotel_location.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/order_confirm.dart';
+import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/order_succesful.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/paymentmethod/payment_method.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/rooms.dart';
 import '../features/splash/view/splash_screen.dart';
@@ -24,6 +25,7 @@ class AppRoutes {
   static const String bookNowScreen = 'BookNowScreen';
   static const String orderConfirmScreen = 'OrderConfirmScreen';
   static const String paymentMethodScreen = 'PaymentMethodScreen';
+  static const String orderSuccessfulScreen = 'OrderSuccessfulScreen';
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -61,6 +63,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       case AppRoutes.paymentMethodScreen:
       return _buildAnimatedRoute(const PaymentMethod());
 
+      case AppRoutes.orderSuccessfulScreen:
+      return _buildAnimatedRoute(const OrderSuccessfulScreen());
+
     default:
       return _buildAnimatedRoute(
         const Scaffold(
@@ -76,7 +81,6 @@ PageRouteBuilder _buildAnimatedRoute(Widget page) {
     reverseTransitionDuration: const Duration(milliseconds: 500),
     pageBuilder: (_, animation, secondaryAnimation) => page,
     transitionsBuilder: (_, animation, secondaryAnimation, child) {
-      // Slide from right with fade
       const begin = Offset(1.0, 0.0);
       const end = Offset.zero;
       const curve = Curves.easeInOutCubic;

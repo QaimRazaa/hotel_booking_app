@@ -5,6 +5,8 @@ import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:hotel_booking_app/utils/constants/images.dart';
 import 'package:hotel_booking_app/utils/constants/sizes.dart';
 
+import '../../../../../common/widgets/elevatedbutton/elevated_button.dart';
+import '../../../../../core/routes.dart';
 import '../../../../../utils/device/device_utils.dart';
 
 class PaymentMethod extends StatefulWidget {
@@ -20,33 +22,43 @@ class _PaymentMethodState extends State<PaymentMethod> {
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              CustomAppBar(
-                title: 'Payment Methods',
-                showActions: false,
-                showBackArrow: true,
-              ),
+        child: Column(
+          children: [
+            CustomAppBar(
+              title: 'Payment Methods',
+              showActions: false,
+              showBackArrow: true,
+            ),
 
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  PaymentIconsRow(
-                    paymentImages: [
-                      AppImages.paymentOne,
-                      AppImages.paymentTwo,
-                      AppImages.paymentThree,
-                      AppImages.paymentTwo,
-                    ],
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                PaymentIconsRow(
+                  paymentImages: [
+                    AppImages.paymentOne,
+                    AppImages.paymentTwo,
+                    AppImages.paymentThree,
+                    AppImages.paymentTwo,
+                  ],
+                ),
+                SizedBox(height: Sizes.size50),
+                Image(image: AssetImage(AppImages.card)),
+                SizedBox(height: Sizes.size50),
+                Padding(
+                  padding: const EdgeInsets.all(Sizes.defaultSpace),
+                  child: CustomElevatedButton(
+                    text: 'Finish Order',
+                    textColor: AppColors.white,
+                    onPressed: () {Navigator.pushNamed(context, AppRoutes.orderSuccessfulScreen);},
+                    gradient: AppColors.linerGradient2,
+                    width: double.infinity,
+                    borderRadius: 14,
                   ),
-                  SizedBox(height: Sizes.size50),
-                  Image(image: AssetImage(AppImages.card)),
-                ],
-              ),
+                ),
+              ],
+            ),
 
-            ],
-          ),
+          ],
         ),
       ),
     );
@@ -60,20 +72,24 @@ class PaymentIconsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: AppSizes.height(6),
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemCount: paymentImages.length,
-        separatorBuilder: (context, index) =>
-            SizedBox(width: AppSizes.width(2.5)),
-        itemBuilder: (context, index) {
-          return SizedBox(
-            width: AppSizes.width(18),
-            height: AppSizes.height(6),
-            child: Image.asset(paymentImages[index], fit: BoxFit.cover),
-          );
-        },
+    return Center(
+      child: SizedBox(
+        height: AppSizes.height(6),
+        child: ListView.separated(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemCount: paymentImages.length,
+          padding: EdgeInsets.symmetric(horizontal: AppSizes.width(4)),
+          separatorBuilder: (context, index) =>
+              SizedBox(width: AppSizes.width(2.5)),
+          itemBuilder: (context, index) {
+            return SizedBox(
+              width: AppSizes.width(18),
+              height: AppSizes.height(6),
+              child: Image.asset(paymentImages[index], fit: BoxFit.cover),
+            );
+          },
+        ),
       ),
     );
   }
