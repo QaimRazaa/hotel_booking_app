@@ -71,4 +71,18 @@ class AppColors{
       Color(0xff00FF94).withOpacity(0.7),
     ],
   );
+
+  static  Gradient linerGradientBlur =LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Colors.transparent,
+      Colors.transparent,
+      Colors.white.withOpacity(0.7),
+      Colors.white.withOpacity(0.7),
+      Colors.white,
+    ],
+    stops: const [0.0, 0.6, 0.8, 0.9, 1.0],
+  );
+
 }

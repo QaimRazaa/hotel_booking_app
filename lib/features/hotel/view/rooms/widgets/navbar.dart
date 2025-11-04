@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hotel_booking_app/core/routes.dart';
+import 'package:hotel_booking_app/features/personalisation/view/myprofile/profile.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
+
+import '../../../../personalisation/view/myprofile/profile.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
@@ -35,7 +38,7 @@ class BottomNavBar extends StatelessWidget {
           _NavItem(
             icon: CupertinoIcons.profile_circled,
             label: 'My profile',
-            onTap: () {},
+            onTap: () {Navigator.pushNamed(context, AppRoutes.myProfileScreen);},
           ),
           _NavItem(
             icon: CupertinoIcons.settings,

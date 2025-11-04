@@ -12,6 +12,9 @@ import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/ord
 import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/redeem_voucher.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/paymentmethod/payment_method.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/rooms.dart';
+import 'package:hotel_booking_app/features/personalisation/view/myprofile/add_a_card.dart';
+import 'package:hotel_booking_app/features/personalisation/view/myprofile/edit_profile.dart';
+import 'package:hotel_booking_app/features/personalisation/view/myprofile/profile.dart';
 import '../features/splash/view/splash_screen.dart';
 
 class AppRoutes {
@@ -28,6 +31,9 @@ class AppRoutes {
   static const String paymentMethodScreen = 'PaymentMethodScreen';
   static const String orderSuccessfulScreen = 'OrderSuccessfulScreen';
   static const String redeemVoucherScreen = 'redeemVoucherScreen';
+  static const String myProfileScreen = 'MyProfileScreen';
+  static const String addACardScreen = 'AddACardScreen';
+  static const String editProfileScreen = 'EditProfileScreen';
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -70,6 +76,15 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
       case AppRoutes.redeemVoucherScreen:
       return _buildAnimatedRoute(const RedeemVoucher());
+
+      case AppRoutes.myProfileScreen:
+      return _buildAnimatedRoute(const MyProfileScreen());
+
+      case AppRoutes.addACardScreen:
+      return _buildAnimatedRoute(const AddACardScreen());
+
+      case AppRoutes.editProfileScreen:
+      return _buildAnimatedRoute(const EditProfile());
 
     default:
       return _buildAnimatedRoute(

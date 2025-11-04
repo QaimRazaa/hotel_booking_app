@@ -25,4 +25,5 @@ class AppTexts {
   static const thankYou = "THANK YOU";
   static const redeemVoucher = "REDEEM VOUCHER";
   static const haveVoucher = "If you have the voucher, please enter the code here";
+  static const add = "Add";
 }
