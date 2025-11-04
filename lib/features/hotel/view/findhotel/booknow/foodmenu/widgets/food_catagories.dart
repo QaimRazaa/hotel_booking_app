@@ -7,7 +7,6 @@ class FoodCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // List of category titles
     final List<String> titles = [
       'Breakfast',
       'Chinese',
