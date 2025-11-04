@@ -22,7 +22,7 @@ class BottomNavBar extends StatelessWidget {
             icon: CupertinoIcons.building_2_fill,
             label: 'Rooms',
             onTap: () {
-              Navigator.pushNamed(context, AppRoutes.findHotelScreen);
+              Navigator.pushNamed(context, AppRoutes.roomScreen);
             },
           ),
           _NavItem(

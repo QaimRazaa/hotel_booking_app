@@ -12,6 +12,7 @@ import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/ord
 import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/redeem_voucher.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/paymentmethod/payment_method.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/rooms.dart';
+import 'package:hotel_booking_app/features/personalisation/view/changepassword/change_password.dart';
 import 'package:hotel_booking_app/features/personalisation/view/myprofile/add_a_card.dart';
 import 'package:hotel_booking_app/features/personalisation/view/myprofile/edit_profile.dart';
 import 'package:hotel_booking_app/features/personalisation/view/myprofile/profile.dart';
@@ -34,6 +35,7 @@ class AppRoutes {
   static const String myProfileScreen = 'MyProfileScreen';
   static const String addACardScreen = 'AddACardScreen';
   static const String editProfileScreen = 'EditProfileScreen';
+  static const String changePasswordScreen = 'ChangePasswordScreen';
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -85,6 +87,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
       case AppRoutes.editProfileScreen:
       return _buildAnimatedRoute(const EditProfile());
+
+      case AppRoutes.changePasswordScreen:
+      return _buildAnimatedRoute(const ChangePassword());
 
     default:
       return _buildAnimatedRoute(

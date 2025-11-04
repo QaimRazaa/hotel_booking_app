@@ -11,7 +11,7 @@ class AppTexts {
   static const alreadyHaveAnAccount = "Already have an account?";
   static const signInUsing = "or sign In using";
   static const password = "Password";
-  static const mobileNo = "MobileNo";
+  static const mobileNo = "Mobile No";
   static const email = "Email";
   static const fullName = "Full Name";
   static const verifyAccount = "Verify Account";
@@ -26,4 +26,8 @@ class AppTexts {
   static const redeemVoucher = "REDEEM VOUCHER";
   static const haveVoucher = "If you have the voucher, please enter the code here";
   static const add = "Add";
+  static const update = "Update";
+  static const oldPassword = "Old Password";
+  static const createNewPassword = "Create New Password";
+  static const confirmNewPassword = "Confirm New Password";
 }

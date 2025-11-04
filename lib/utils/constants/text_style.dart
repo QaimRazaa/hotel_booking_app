@@ -25,7 +25,7 @@ class AppTextStyles {
   // Button Text Style
   static TextStyle buttonText() {
     return GoogleFonts.roboto(
-      fontSize: AppSizes.font(2),
+      fontSize: AppSizes.font(1.5),
       fontWeight: FontWeight.w400,
       color: AppColors.primary,
     );

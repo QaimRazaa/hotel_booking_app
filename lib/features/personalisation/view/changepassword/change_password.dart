@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking_app/utils/constants/images.dart';
+import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/appbar.dart';
 import 'package:hotel_booking_app/utils/constants/sizes.dart';
+
 import '../../../../common/widgets/elevatedbutton/elevated_button.dart';
 import '../../../../common/widgets/textfield/textfield.dart';
 import '../../../../core/routes.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/texts.dart';
 import '../../../../utils/device/device_utils.dart';
-import '../../../authentication/view/signup/widgets/custom_country_field.dart';
-import '../../../hotel/view/rooms/widgets/appbar.dart';
 
-class EditProfile extends StatefulWidget {
-  const EditProfile({super.key});
+class ChangePassword extends StatefulWidget {
+  const ChangePassword({super.key});
 
   @override
-  State<EditProfile> createState() => _EditProfileState();
+  State<ChangePassword> createState() => _ChangePasswordState();
 }
 
-class _EditProfileState extends State<EditProfile> {
+class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,34 +24,34 @@ class _EditProfileState extends State<EditProfile> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const CustomAppBar(
-                title: 'Edit Profile',
-                showBackArrow: true,
+              CustomAppBar(
+                title: 'Change Password',
                 showActions: false,
+                showBackArrow: true,
               ),
               Padding(
-                padding: AppSizes.paddingAll(6),
+                padding:  EdgeInsets.symmetric(horizontal: AppSizes.width(5) ),
                 child: Column(
                   children: [
-                    CircleAvatar(
-                      backgroundImage: const AssetImage(AppImages.myProfile),
-                      maxRadius: AppSizes.width(20),
-                    ),
-                    SizedBox(height: AppSizes.height(6)),
+                    SizedBox(height: AppSizes.height(2.5)),
                     CustomTextField(
-                      hintText: AppTexts.fullName,
-                      prefixIcon: Icons.person,
+                      hintText: AppTexts.oldPassword,
+                      prefixIcon: Icons.lock_outline,
                       obscureText: true,
                     ),
                     SizedBox(height: AppSizes.height(3)),
                     CustomTextField(
-                      hintText: AppTexts.email,
-                      prefixIcon: Icons.email_outlined,
+                      hintText: AppTexts.createNewPassword,
+                      prefixIcon: Icons.lock_outline,
                       obscureText: true,
                     ),
                     SizedBox(height: AppSizes.height(3)),
-                    const CountryCodeField(),
-                    SizedBox(height: AppSizes.height(10)),
+                    CustomTextField(
+                      hintText: AppTexts.confirmNewPassword,
+                      prefixIcon: Icons.lock_outline,
+                      obscureText: true,
+                    ),
+                    SizedBox(height: AppSizes.height(8)),
                     CustomElevatedButton(
                       text: AppTexts.update,
                       textColor: AppColors.white,
@@ -66,6 +65,7 @@ class _EditProfileState extends State<EditProfile> {
                   ],
                 ),
               ),
+
             ],
           ),
         ),
