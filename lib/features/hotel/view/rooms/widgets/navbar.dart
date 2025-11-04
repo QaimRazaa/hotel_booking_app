@@ -29,7 +29,7 @@ class BottomNavBar extends StatelessWidget {
           ),
           _NavItem(
             icon: CupertinoIcons.car_detailed,
-            label: 'Car renting',
+            label: 'Car Washing ',
             onTap: () {},
           ),
           _NavItem(

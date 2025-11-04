@@ -15,6 +15,8 @@ class CustomTextField extends StatelessWidget {
   final FontWeight fontWeight;
   final Color textColor;
   final Color hintTextColor;
+  final Color? underlineColor; // 👈 added
+  final Color? focusedUnderlineColor; // 👈 added
 
   const CustomTextField({
     super.key,
@@ -30,6 +32,8 @@ class CustomTextField extends StatelessWidget {
     this.fontWeight = FontWeight.normal,
     this.textColor = Colors.black,
     this.hintTextColor = Colors.grey,
+    this.underlineColor, // 👈 optional parameter
+    this.focusedUnderlineColor, // 👈 optional parameter
   });
 
   @override
@@ -59,18 +63,27 @@ class CustomTextField extends StatelessWidget {
             color: hintTextColor,
           ),
           border: underLine
-              ? const UnderlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFFC4C4C4), width: 1),
+              ? UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: underlineColor ?? const Color(0xFFC4C4C4),
+              width: 1,
+            ),
           )
               : InputBorder.none,
           enabledBorder: underLine
-              ? const UnderlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFFC4C4C4), width: 1),
+              ? UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: underlineColor ?? const Color(0xFFC4C4C4),
+              width: 1,
+            ),
           )
               : InputBorder.none,
           focusedBorder: underLine
-              ? const UnderlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFF000000), width: 1),
+              ? UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: focusedUnderlineColor ?? AppColors.black,
+              width: 1,
+            ),
           )
               : InputBorder.none,
         ),

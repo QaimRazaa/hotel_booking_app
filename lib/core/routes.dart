@@ -9,6 +9,7 @@ import 'package:hotel_booking_app/features/hotel/view/findhotel/findhotel.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/hotellocation/hotel_location.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/order_confirm.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/order_succesful.dart';
+import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/redeem_voucher.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/paymentmethod/payment_method.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/rooms.dart';
 import '../features/splash/view/splash_screen.dart';
@@ -26,6 +27,7 @@ class AppRoutes {
   static const String orderConfirmScreen = 'OrderConfirmScreen';
   static const String paymentMethodScreen = 'PaymentMethodScreen';
   static const String orderSuccessfulScreen = 'OrderSuccessfulScreen';
+  static const String redeemVoucherScreen = 'redeemVoucherScreen';
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -65,6 +67,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
       case AppRoutes.orderSuccessfulScreen:
       return _buildAnimatedRoute(const OrderSuccessfulScreen());
+
+      case AppRoutes.redeemVoucherScreen:
+      return _buildAnimatedRoute(const RedeemVoucher());
 
     default:
       return _buildAnimatedRoute(

@@ -14,6 +14,7 @@ class AppImages {
   static const String backgroundOne = "assets/background/bgone.png";
   static const String locationIcon = "assets/background/Rectangle.png";
   static const String backgroundTwo = "assets/background/backgroundtwo.jpg";
+  static const String backgroundThree = "assets/background/backgroundthree.jpg";
 
   static const String map = "assets/images/map.png";
 
@@ -25,6 +26,11 @@ class AppImages {
   static const String planeIcon = "assets/images/icons/plane.png";
   static const String subwayIcon = "assets/images/icons/subway.png";
   static const String moreIcon = "assets/images/icons/moreicon.png";
+  static const String bedIcon = "assets/images/icons/bed.png";
+  static const String pencilIcon = "assets/images/icons/pencil.png";
+
+  static const String myProfile = "assets/images/profile/myprofile.jpg";
+
 
 
   static const String card = "assets/images/cardimage.png";

@@ -21,4 +21,8 @@ class AppTexts {
   static const resend = "Resend in 30s";
   static const didntRecieveOtp = "Don't received otp?";
   static const forgotPassword = "Forgot Password?";
+  static const orderSuccessful = "YOUR ORDER IS SUCCESSFUL";
+  static const thankYou = "THANK YOU";
+  static const redeemVoucher = "REDEEM VOUCHER";
+  static const haveVoucher = "If you have the voucher, please enter the code here";
 }
