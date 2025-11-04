@@ -11,6 +11,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final Color titleColor;
 
+
+
   const CustomAppBar({
     super.key,
     required this.title,
@@ -23,7 +25,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppSizes.init(context);
 
     return Container(
       padding: EdgeInsets.symmetric(

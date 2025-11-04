@@ -29,6 +29,13 @@ class AppImages {
   static const String bedIcon = "assets/images/icons/bed.png";
   static const String pencilIcon = "assets/images/icons/pencil.png";
 
+
+  static const String breakfastIconTwo = "assets/images/icons/food/breakfast.png";
+  static const String chineseIcon = "assets/images/icons/food/chinese.png";
+  static const String hamburgerIcon = "assets/images/icons/food/hamburger.png";
+  static const String nuggetsIcon = "assets/images/icons/food/nuggets.png";
+  static const String saladIcon = "assets/images/icons/food/salad.png";
+
   static const String myProfile = "assets/images/profile/myprofile.jpg";
 
 

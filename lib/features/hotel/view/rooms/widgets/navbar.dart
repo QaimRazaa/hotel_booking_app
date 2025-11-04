@@ -43,7 +43,7 @@ class BottomNavBar extends StatelessWidget {
           _NavItem(
             icon: CupertinoIcons.settings,
             label: 'Settings',
-            onTap: () {},
+            onTap: () {Navigator.pushNamed(context, AppRoutes.settingsScreen);},
           ),
         ],
       ),

@@ -10,6 +10,7 @@ class SectionTitle extends StatelessWidget {
   final Color? subTitleColor;
   final double letterSpacing;
   final TextAlign textAlign;
+  final VoidCallback? subTitleOnTap;
 
   const SectionTitle({
     super.key,
@@ -21,6 +22,7 @@ class SectionTitle extends StatelessWidget {
     this.subTitleColor,
     this.letterSpacing = 0.5,
     this.textAlign = TextAlign.start,
+    this.subTitleOnTap,
   });
 
   @override
@@ -39,14 +41,17 @@ class SectionTitle extends StatelessWidget {
           ),
         ),
         if(subTitle != null)
-          Text(
-            subTitle!,
-            textAlign: textAlign,
-            style: GoogleFonts.roboto(
-              fontSize: fontSize,
-              fontWeight: fontWeight,
-              color: subTitleColor ?? Colors.black,
-              letterSpacing: letterSpacing,
+          GestureDetector(
+            onTap: subTitleOnTap,
+            child: Text(
+              subTitle!,
+              textAlign: textAlign,
+              style: GoogleFonts.roboto(
+                fontSize: fontSize,
+                fontWeight: fontWeight,
+                color: subTitleColor ?? Colors.black,
+                letterSpacing: letterSpacing,
+              ),
             ),
           ),
       ],

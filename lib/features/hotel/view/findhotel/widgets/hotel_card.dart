@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:hotel_booking_app/utils/constants/sizes.dart';
-
 import '../../../../../common/widgets/elevatedbutton/small_elevated_button.dart';
 
 class HotelCard extends StatelessWidget {
@@ -12,11 +11,12 @@ class HotelCard extends StatelessWidget {
   final int reviewCount;
   final String description;
   final String discount;
-  final int? price; // ✅ optional
-  final String? distance; // ✅ optional
-  final String? minutes; // ✅ optional
+  final int? price;
+  final String? distance;
+  final String? minutes;
   final VoidCallback? onBookPressed;
   final double fontSize;
+  final String buttonText;
 
   const HotelCard({
     super.key,
@@ -31,6 +31,7 @@ class HotelCard extends StatelessWidget {
     this.minutes,
     this.onBookPressed,
     this.fontSize = 14,
+    this.buttonText = "Book Now",
   });
 
   @override
@@ -60,7 +61,7 @@ class HotelCard extends StatelessWidget {
                 child: Image.asset(
                   imageUrl,
                   width: 90,
-                  height: fontSize > 14 ? 120 : 100, // ✅ adaptive height
+                  height: fontSize > 14 ? 120 : 100,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
@@ -73,7 +74,6 @@ class HotelCard extends StatelessWidget {
                 ),
               ),
 
-              // 📄 Info section
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(10),
@@ -153,10 +153,9 @@ class HotelCard extends StatelessWidget {
                             ],
                           ),
 
-                          // ✅ Conditional column (distance/minutes OR Book button)
                           onBookPressed != null
                               ? SmallElevatedButton(
-                            text: "Book Now",
+                            text: buttonText,
                             onPressed: onBookPressed!,
                             gradient: AppColors.linerGradient3,
                             width: 95,

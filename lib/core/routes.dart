@@ -5,6 +5,7 @@ import 'package:hotel_booking_app/features/authentication/view/signin/sign_in.da
 import 'package:hotel_booking_app/features/authentication/view/signup/signup.dart';
 import 'package:hotel_booking_app/features/authentication/view/signup/verify_account.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/book_now.dart';
+import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/foodmenu/food_menu.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/findhotel.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/hotellocation/hotel_location.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/order_confirm.dart';
@@ -16,6 +17,11 @@ import 'package:hotel_booking_app/features/personalisation/view/changepassword/c
 import 'package:hotel_booking_app/features/personalisation/view/myprofile/add_a_card.dart';
 import 'package:hotel_booking_app/features/personalisation/view/myprofile/edit_profile.dart';
 import 'package:hotel_booking_app/features/personalisation/view/myprofile/profile.dart';
+import 'package:hotel_booking_app/features/personalisation/view/settings/furthersettings/faq.dart';
+import 'package:hotel_booking_app/features/personalisation/view/settings/furthersettings/notifications.dart';
+import 'package:hotel_booking_app/features/personalisation/view/settings/furthersettings/privacy_policy.dart';
+import 'package:hotel_booking_app/features/personalisation/view/settings/furthersettings/terms_conditions.dart';
+import 'package:hotel_booking_app/features/personalisation/view/settings/settings.dart';
 import '../features/splash/view/splash_screen.dart';
 
 class AppRoutes {
@@ -36,6 +42,12 @@ class AppRoutes {
   static const String addACardScreen = 'AddACardScreen';
   static const String editProfileScreen = 'EditProfileScreen';
   static const String changePasswordScreen = 'ChangePasswordScreen';
+  static const String settingsScreen = 'SettingsScreen';
+  static const String privacyPolicy = 'PrivacyPolicy';
+  static const String termsConditions = 'TermsConditions';
+  static const String faq = 'Faq';
+  static const String foodMenu = 'FoodMenu';
+  static const String notifications = 'Notifications';
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -91,6 +103,24 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       case AppRoutes.changePasswordScreen:
       return _buildAnimatedRoute(const ChangePassword());
 
+      case AppRoutes.settingsScreen:
+      return _buildAnimatedRoute(const Settings());
+
+      case AppRoutes.privacyPolicy:
+      return _buildAnimatedRoute(const PrivacyPolicy());
+
+      case AppRoutes.termsConditions:
+      return _buildAnimatedRoute(const TermsConditions());
+
+      case AppRoutes.faq:
+      return _buildAnimatedRoute(const Faq());
+
+      case AppRoutes.notifications:
+      return _buildAnimatedRoute(const Notifications());
+
+      case AppRoutes.foodMenu:
+      return _buildAnimatedRoute(const FoodMenu());
+
     default:
       return _buildAnimatedRoute(
         const Scaffold(
@@ -102,8 +132,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
 PageRouteBuilder _buildAnimatedRoute(Widget page) {
   return PageRouteBuilder(
-    transitionDuration: const Duration(milliseconds: 700),
-    reverseTransitionDuration: const Duration(milliseconds: 500),
+    transitionDuration: const Duration(milliseconds: 600),
+    reverseTransitionDuration: const Duration(milliseconds: 400),
     pageBuilder: (_, animation, secondaryAnimation) => page,
     transitionsBuilder: (_, animation, secondaryAnimation, child) {
       const begin = Offset(1.0, 0.0);

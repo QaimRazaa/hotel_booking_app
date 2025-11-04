@@ -25,8 +25,25 @@ class AppSizes {
   static EdgeInsets paddingAll(double percent) =>
       EdgeInsets.all(blockWidth * percent);
 
-  static EdgeInsets paddingSymmetric({double horizontal = 0, double vertical = 0}) =>
-      EdgeInsets.symmetric(horizontal: blockWidth * horizontal, vertical: blockHeight * vertical);
+  static EdgeInsets paddingSymmetric({
+    double horizontal = 0,
+    double vertical = 0,
+  }) => EdgeInsets.symmetric(
+    horizontal: blockWidth * horizontal,
+    vertical: blockHeight * vertical,
+  );
+
+  static EdgeInsets paddingOnly({
+    double left = 0,
+    double top = 0,
+    double right = 0,
+    double bottom = 0,
+  }) => EdgeInsets.only(
+    left: blockWidth * left,
+    top: blockHeight * top,
+    right: blockWidth * right,
+    bottom: blockHeight * bottom,
+  );
 
   static BorderRadius borderRadius(double percent) =>
       BorderRadius.circular(blockWidth * percent);
@@ -34,5 +51,4 @@ class AppSizes {
   static double radius(double percent) => blockWidth * percent;
 
   static double icon(double percent) => blockHeight * percent;
-
 }

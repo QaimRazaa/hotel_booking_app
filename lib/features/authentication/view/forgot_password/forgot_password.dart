@@ -67,7 +67,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                               SizedBox(height: AppSizes.height(5)),
                               SizedBox(
                                 width: double.infinity,
-                                height: AppSizes.height(6),
+                                height: AppSizes.height(5.2),
                                 child: CustomElevatedButton(
                                   text: 'Submit',
                                   gradient: AppColors.linerGradient2,
@@ -76,7 +76,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                   onPressed: () {
                                     Navigator.pushNamed(
                                       context,
-                                      AppRoutes.forgotPasswordScreen,
+                                      AppRoutes.signInScreen,
                                     );
                                   },
                                 ),
