@@ -8,6 +8,7 @@ import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/widgets/
 import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:hotel_booking_app/utils/device/device_utils.dart'; // AppSizes
 
+import '../../../../../utils/constants/images.dart';
 import '../widgets/room_info_row.dart';
 
 class OrderConfirm extends StatefulWidget {
@@ -21,11 +22,20 @@ class _OrderConfirmState extends State<OrderConfirm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TopHotelImage(),
+            TopHotelImage(
+              imagePath: AppImages.hotelTwo,
+              title: 'Heden Golf',
+              location: 'Abidjan, Côte d\'Ivoire',
+              rating: 8.9,
+              height: 300,
+              actionIcon: Icons.share,
+              onActionPressed: () {},
+            ),
             Padding(
               padding: EdgeInsets.all(AppSizes.width(6)),
               child: Column(

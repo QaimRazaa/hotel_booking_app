@@ -43,6 +43,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               Text(
                 title,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
                 style: GoogleFonts.roboto(
                   fontSize: AppSizes.font(2.4),
                   fontWeight: FontWeight.w500,

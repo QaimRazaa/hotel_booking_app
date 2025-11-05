@@ -5,6 +5,7 @@ import 'package:hotel_booking_app/features/authentication/view/signin/sign_in.da
 import 'package:hotel_booking_app/features/authentication/view/signup/signup.dart';
 import 'package:hotel_booking_app/features/authentication/view/signup/verify_account.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/book_now.dart';
+import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/foodmenu/food_detail.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/foodmenu/food_menu.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/findhotel.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/hotellocation/hotel_location.dart';
@@ -47,6 +48,7 @@ class AppRoutes {
   static const String termsConditions = 'TermsConditions';
   static const String faq = 'Faq';
   static const String foodMenu = 'FoodMenu';
+  static const String foodDetail = 'FoodDetail';
   static const String notifications = 'Notifications';
 }
 
@@ -120,6 +122,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
       case AppRoutes.foodMenu:
       return _buildAnimatedRoute(const FoodMenu());
+
+      case AppRoutes.foodDetail:
+      return _buildAnimatedRoute(const FoodDetail());
 
     default:
       return _buildAnimatedRoute(

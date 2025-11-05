@@ -2,61 +2,88 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/images.dart';
+import '../../../../../../utils/device/device_utils.dart';
 import '../../../rooms/widgets/appbar.dart';
 
-
 class TopHotelImage extends StatelessWidget {
-  const TopHotelImage({super.key});
+  final String imagePath;
+  final String title;
+  final String location;
+  final double rating;
+  final double height;
+  final IconData? actionIcon;
+  final VoidCallback? onActionPressed;
+  final bool showLocationIcon;
+
+  const TopHotelImage({
+    super.key,
+    required this.imagePath,
+    required this.title,
+    required this.location,
+    required this.rating,
+    this.height = 280,
+    this.actionIcon = Icons.share,
+    this.onActionPressed,
+    this.showLocationIcon = true,
+  });
 
   @override
   Widget build(BuildContext context) {
+    AppSizes.init(context);
+
     return Stack(
       children: [
         Image.asset(
-          AppImages.hotelTwo,
-          height: 280,
+          imagePath,
+          height: AppSizes.height(height / (AppSizes.screenHeight / 100)),
           width: double.infinity,
           fit: BoxFit.cover,
         ),
-        Container(height: 280, color: Colors.black.withOpacity(0.3)),
-
+        Container(
+          height: AppSizes.height(height / (AppSizes.screenHeight / 100)),
+          color: Colors.black.withOpacity(0.3),
+        ),
         Padding(
-          padding: const EdgeInsets.only(top: 18),
+          padding: EdgeInsets.only(top: AppSizes.height(2)),
           child: CustomAppBar(
-            title: 'Heden Golf',
+            title: title,
             titleColor: AppColors.white,
             showBackArrow: true,
             actions: [
-              IconButton(
-                icon: const Icon(Icons.share, color: AppColors.white),
-                onPressed: () {},
-              ),
+              if (actionIcon != null)
+                IconButton(
+                  icon: Icon(actionIcon, color: AppColors.white),
+                  onPressed: onActionPressed,
+                ),
             ],
           ),
         ),
-
         Positioned(
-          bottom: 12,
-          left: 16,
-          right: 16,
+          bottom: AppSizes.height(1.5),
+          left: AppSizes.width(4),
+          right: AppSizes.width(4),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                '8.9',
+              Text(
+                rating.toString(),
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: AppSizes.font(2.2),
                 ),
               ),
               Row(
-                children: const [
-                  Icon(Icons.location_on, size: 18, color: AppColors.white),
-                  SizedBox(width: 4),
+                children: [
+                  if (showLocationIcon)
+                    const Icon(Icons.location_on, size: 18, color: AppColors.white),
+                  SizedBox(width: AppSizes.width(1)),
                   Text(
-                    'Abidjan, Cocle d\'Ivoire',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
+                    location,
+                    style: TextStyle(
+                      fontSize: AppSizes.font(2),
+                      color: Colors.white,
+                    ),
                   ),
                 ],
               ),

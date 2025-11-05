@@ -8,6 +8,7 @@ import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/tabbar.dart'
 import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:provider/provider.dart';
 import '../../../../../common/widgets/bookingnavbar/booking_nav_bar.dart';
+import '../../../../../utils/constants/images.dart';
 import '../../../../../utils/device/device_utils.dart';
 import '../../../viewmodel/booknow/tab_provider.dart';
 
@@ -34,8 +35,15 @@ class _BookNowScreenState extends State<BookNowScreen> {
               SingleChildScrollView(
                 child: Column(
                   children: [
-                    const TopHotelImage(),
-
+                    TopHotelImage(
+                      imagePath: AppImages.hotelTwo,
+                      title: 'Heden Golf',
+                      location: 'Abidjan, Côte d\'Ivoire',
+                      rating: 8.9,
+                      height: 300,
+                      actionIcon: Icons.share,
+                      onActionPressed: () {},
+                    ),
                     // TabBar
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: AppSizes.height(2)),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/foodmenu/widgets/food_catagories.dart';
+import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/foodmenu/widgets/nav_bar.dart';
 import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:hotel_booking_app/utils/device/device_utils.dart';
 
@@ -24,6 +25,9 @@ class _FoodMenuState extends State<FoodMenu> {
         child: Column(
           children: [
             CustomAppBar(
+              onBackPressed: () {
+                Navigator.pushNamed(context, AppRoutes.bookNowScreen);
+              },
               title: 'Food',
               showBackArrow: true,
               showActions: false,
@@ -43,7 +47,7 @@ class _FoodMenuState extends State<FoodMenu> {
                     discount: '25% OFF',
                     price: 34,
                     onBookPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.bookNowScreen);
+                      Navigator.pushNamed(context, AppRoutes.foodDetail);
                     },
                   ),
                   Divider(color: AppColors.lightWhite),
@@ -56,9 +60,7 @@ class _FoodMenuState extends State<FoodMenu> {
                     description: 'neque, amet blandit tincidunt vulputate ',
                     discount: '15% OFF',
                     price: 12,
-                    onBookPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.bookNowScreen);
-                    },
+                    onBookPressed: () {},
                   ),
                   Divider(color: AppColors.lightWhite),
                   HotelCard(
@@ -70,9 +72,7 @@ class _FoodMenuState extends State<FoodMenu> {
                     description: 'neque, amet blandit tincidunt vulputate ',
                     discount: '10% OFF',
                     price: 22,
-                    onBookPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.bookNowScreen);
-                    },
+                    onBookPressed: () {},
                   ),
                   Divider(color: AppColors.lightWhite),
                   HotelCard(
@@ -84,15 +84,20 @@ class _FoodMenuState extends State<FoodMenu> {
                     description: 'neque, amet blandit tincidunt vulputate ',
                     discount: '25% OFF',
                     price: 54,
-                    onBookPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.bookNowScreen);
-                    },
+                    onBookPressed: () {},
                   ),
                 ],
               ),
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: FoodNavBar(
+        price: 'Total items Added : 1',
+        subtitle: 'Total price : \$15',
+        gradient: AppColors.linerGradient3,
+        buttonText: 'Add',
+        onPressed: () {},
       ),
     );
   }
