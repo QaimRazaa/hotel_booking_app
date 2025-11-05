@@ -11,8 +11,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final Color titleColor;
 
-
-
   const CustomAppBar({
     super.key,
     required this.title,
@@ -25,7 +23,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: AppSizes.width(4),
@@ -55,13 +52,27 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           if (showActions)
             Row(
-              children: actions ??
+              mainAxisSize: MainAxisSize.min,
+              children:
+                  actions
+                      ?.map(
+                        (action) => GestureDetector(
+                          behavior: HitTestBehavior.translucent,
+                          onTap: () {},
+                          child: action,
+                        ),
+                      )
+                      .toList() ??
                   [
                     const _CustomChip(label: 'Stay', selected: false),
                     SizedBox(width: AppSizes.width(2)),
                     const _CustomChip(label: 'Pass', selected: true),
                     SizedBox(width: AppSizes.width(2)),
-                    Image(image: AssetImage(AppImages.moreIcon)),
+                    GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {},
+                      child: Image(image: AssetImage(AppImages.moreIcon)),
+                    ),
                   ],
             ),
         ],

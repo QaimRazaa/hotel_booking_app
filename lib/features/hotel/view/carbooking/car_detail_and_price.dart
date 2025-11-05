@@ -7,6 +7,7 @@ import '../../../../common/widgets/sectionheading/section_heading.dart';
 import '../../../../common/widgets/textfield/textfield.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/images.dart';
+import '../../../../utils/constants/text_style.dart';
 import '../../../../utils/device/device_utils.dart';
 import '../rooms/widgets/appbar.dart';
 import '../rooms/widgets/navbar.dart';
@@ -27,10 +28,31 @@ class _CarDetailAndPriceState extends State<CarDetailAndPrice> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const CustomAppBar(
+               CustomAppBar(
                 title: 'Book a Car',
                 showBackArrow: false,
-                showActions: false,
+                showActions: true,
+                actions: [
+                  PopupMenuButton<String>(
+                    icon:  Icon(Icons.more_vert, color: AppColors.black),
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(12),
+                    onSelected: (value) {
+                      if (value == 'history') {
+                        Navigator.pushNamed(context, AppRoutes.bookingHistory);
+                      }
+                    },
+                    itemBuilder: (context) => [
+                      PopupMenuItem<String>(
+                        value: 'history',
+                        child:  Text(
+                            'History',
+                            style: AppTextStyles.buttonText().copyWith(color: AppColors.white)
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
 
               Padding(
@@ -59,6 +81,7 @@ class _CarDetailAndPriceState extends State<CarDetailAndPrice> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
@@ -67,7 +90,6 @@ class _CarDetailAndPriceState extends State<CarDetailAndPrice> {
                                   fontWeight: FontWeight.w300,
                                   fontSize: 14,
                                 ),
-                                SizedBox(height: AppSizes.height(1)),
                                 SectionTitle(
                                   title: 'Saloon',
                                   fontWeight: FontWeight.w500,
@@ -75,9 +97,10 @@ class _CarDetailAndPriceState extends State<CarDetailAndPrice> {
                                 ),
                               ],
                             ),
-                            Divider(color: AppColors.dividerColor),
-                            SizedBox(height: AppSizes.height(1)),
-
+                            SizedBox(
+                              width: AppSizes.width(40),
+                              child: Divider(color: AppColors.dividerColor),
+                            ),
                             Row(
                               children: [
                                 SectionTitle(
@@ -85,7 +108,6 @@ class _CarDetailAndPriceState extends State<CarDetailAndPrice> {
                                   fontWeight: FontWeight.w300,
                                   fontSize: 14,
                                 ),
-                                SizedBox(height: AppSizes.height(1)),
                                 SectionTitle(
                                   title: 'English',
                                   fontWeight: FontWeight.w500,
@@ -96,6 +118,7 @@ class _CarDetailAndPriceState extends State<CarDetailAndPrice> {
                           ],
                         ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
@@ -104,7 +127,6 @@ class _CarDetailAndPriceState extends State<CarDetailAndPrice> {
                                   fontWeight: FontWeight.w300,
                                   fontSize: 14,
                                 ),
-                                SizedBox(height: AppSizes.height(1)),
                                 SectionTitle(
                                   title: '15 min',
                                   fontWeight: FontWeight.w500,
@@ -112,9 +134,10 @@ class _CarDetailAndPriceState extends State<CarDetailAndPrice> {
                                 ),
                               ],
                             ),
-                            Divider(color: AppColors.dividerColor),
-                            SizedBox(height: AppSizes.height(1)),
-
+                            SizedBox(
+                              width: AppSizes.width(40),
+                              child: Divider(color: AppColors.dividerColor),
+                            ),
                             Row(
                               children: [
                                 SectionTitle(
@@ -122,7 +145,6 @@ class _CarDetailAndPriceState extends State<CarDetailAndPrice> {
                                   fontWeight: FontWeight.w300,
                                   fontSize: 14,
                                 ),
-                                SizedBox(height: AppSizes.height(1)),
                                 SectionTitle(
                                   title: '\$20',
                                   fontWeight: FontWeight.w500,
@@ -134,6 +156,7 @@ class _CarDetailAndPriceState extends State<CarDetailAndPrice> {
                         ),
                       ],
                     ),
+
                   ],
                 ),
               ),
@@ -152,7 +175,7 @@ class _CarDetailAndPriceState extends State<CarDetailAndPrice> {
                       offset: Offset(0, -AppSizes.height(3)),
                       child: GestureDetector(
                           onTap: (){Navigator.pushNamed(context, AppRoutes.assignedDriver);},
-                          child: Image.asset(AppImages.cancelIcon)),
+                          child: Image.asset(AppImages.okayIcon)),
                     ),
                   ),
                 ],

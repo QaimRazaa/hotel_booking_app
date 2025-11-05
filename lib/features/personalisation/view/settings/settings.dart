@@ -19,9 +19,9 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
-    AppSizes.init(context);
 
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(

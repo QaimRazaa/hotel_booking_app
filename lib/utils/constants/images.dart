@@ -39,6 +39,7 @@ class AppImages {
   static const String saladIcon = "assets/images/icons/food/salad.png";
 
   static const String myProfile = "assets/images/profile/myprofile.jpg";
+  static const String driver = "assets/images/profile/driver.jpg";
 
 
 

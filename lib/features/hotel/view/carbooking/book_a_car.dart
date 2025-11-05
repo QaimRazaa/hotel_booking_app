@@ -10,6 +10,8 @@ import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:hotel_booking_app/utils/constants/images.dart';
 import 'package:hotel_booking_app/utils/device/device_utils.dart';
 
+import '../../../../utils/constants/text_style.dart';
+
 class BookACar extends StatefulWidget {
   const BookACar({super.key});
 
@@ -26,10 +28,31 @@ class _BookACarState extends State<BookACar> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const CustomAppBar(
+               CustomAppBar(
                 title: 'Book a Car',
                 showBackArrow: false,
-                showActions: false,
+                showActions: true,
+                actions: [
+                  PopupMenuButton<String>(
+                    icon:  Icon(Icons.more_vert, color: AppColors.black),
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(12),
+                    onSelected: (value) {
+                      if (value == 'history') {
+                        Navigator.pushNamed(context, AppRoutes.bookingHistory);
+                      }
+                    },
+                    itemBuilder: (context) => [
+                      PopupMenuItem<String>(
+                        value: 'history',
+                        child:  Text(
+                            'History',
+                            style: AppTextStyles.buttonText().copyWith(color: AppColors.white)
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
 
               Padding(

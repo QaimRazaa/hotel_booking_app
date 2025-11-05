@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/features/hotel/view/carbooking/widgets/cancel_cab.dart';
+import 'package:hotel_booking_app/features/hotel/view/carbooking/widgets/driver_card.dart';
 
 import '../../../../common/widgets/searchfield/searchField.dart';
 import '../../../../common/widgets/sectionheading/section_heading.dart';
 import '../../../../core/routes.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/images.dart';
+import '../../../../utils/constants/text_style.dart';
 import '../../../../utils/device/device_utils.dart';
 import '../rooms/widgets/appbar.dart';
 import '../rooms/widgets/navbar.dart';
@@ -25,10 +28,31 @@ class _AssignedDriverState extends State<AssignedDriver> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const CustomAppBar(
+               CustomAppBar(
                 title: 'Book a Car',
                 showBackArrow: false,
-                showActions: false,
+                showActions: true,
+                 actions: [
+                   PopupMenuButton<String>(
+                     icon:  Icon(Icons.more_vert, color: AppColors.black),
+                     color: AppColors.primary,
+                     borderRadius: BorderRadius.circular(12),
+                     onSelected: (value) {
+                       if (value == 'history') {
+                         Navigator.pushNamed(context, AppRoutes.bookingHistory);
+                       }
+                     },
+                     itemBuilder: (context) => [
+                       PopupMenuItem<String>(
+                         value: 'history',
+                         child:  Text(
+                             'History',
+                             style: AppTextStyles.buttonText().copyWith(color: AppColors.white)
+                         ),
+                       ),
+                     ],
+                   ),
+                 ],
               ),
 
               Padding(
@@ -57,6 +81,7 @@ class _AssignedDriverState extends State<AssignedDriver> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
@@ -65,7 +90,6 @@ class _AssignedDriverState extends State<AssignedDriver> {
                                   fontWeight: FontWeight.w300,
                                   fontSize: 14,
                                 ),
-                                SizedBox(height: AppSizes.height(1)),
                                 SectionTitle(
                                   title: 'Saloon',
                                   fontWeight: FontWeight.w500,
@@ -73,9 +97,10 @@ class _AssignedDriverState extends State<AssignedDriver> {
                                 ),
                               ],
                             ),
-                            Divider(color: AppColors.dividerColor),
-                            SizedBox(height: AppSizes.height(1)),
-
+                            SizedBox(
+                              width: AppSizes.width(40),
+                              child: Divider(color: AppColors.dividerColor),
+                            ),
                             Row(
                               children: [
                                 SectionTitle(
@@ -83,7 +108,6 @@ class _AssignedDriverState extends State<AssignedDriver> {
                                   fontWeight: FontWeight.w300,
                                   fontSize: 14,
                                 ),
-                                SizedBox(height: AppSizes.height(1)),
                                 SectionTitle(
                                   title: 'English',
                                   fontWeight: FontWeight.w500,
@@ -94,6 +118,7 @@ class _AssignedDriverState extends State<AssignedDriver> {
                           ],
                         ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
@@ -102,7 +127,6 @@ class _AssignedDriverState extends State<AssignedDriver> {
                                   fontWeight: FontWeight.w300,
                                   fontSize: 14,
                                 ),
-                                SizedBox(height: AppSizes.height(1)),
                                 SectionTitle(
                                   title: '15 min',
                                   fontWeight: FontWeight.w500,
@@ -110,9 +134,10 @@ class _AssignedDriverState extends State<AssignedDriver> {
                                 ),
                               ],
                             ),
-                            Divider(color: AppColors.dividerColor),
-                            SizedBox(height: AppSizes.height(1)),
-
+                            SizedBox(
+                              width: AppSizes.width(40),
+                              child: Divider(color: AppColors.dividerColor),
+                            ),
                             Row(
                               children: [
                                 SectionTitle(
@@ -120,7 +145,6 @@ class _AssignedDriverState extends State<AssignedDriver> {
                                   fontWeight: FontWeight.w300,
                                   fontSize: 14,
                                 ),
-                                SizedBox(height: AppSizes.height(1)),
                                 SectionTitle(
                                   title: '\$20',
                                   fontWeight: FontWeight.w500,
@@ -149,8 +173,30 @@ class _AssignedDriverState extends State<AssignedDriver> {
                     child: Transform.translate(
                       offset: Offset(0, -AppSizes.height(3)),
                       child: GestureDetector(
-                          onTap: (){Navigator.pushNamed(context, AppRoutes.assignedDriver);},
-                          child: Image.asset(AppImages.okayIcon)),
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => const CancelCabDialog(),
+                          );
+                        },
+                        child: Image.asset(AppImages.cancelIcon),
+                      ),
+                    ),
+                  ),
+                  Positioned.fill(
+                    child: Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: AppSizes.width(5),
+                        ),
+                        child: DriverCard(
+                          imageUrl: AppImages.driver,
+                          name: 'Winston',
+                          rating: 3.9,
+                          reviewCount: 200,
+                          phoneNumber: '+225 22 43 15 89',
+                        ),
+                      ),
                     ),
                   ),
                 ],

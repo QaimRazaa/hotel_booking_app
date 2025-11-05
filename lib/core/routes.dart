@@ -6,7 +6,9 @@ import 'package:hotel_booking_app/features/authentication/view/signup/signup.dar
 import 'package:hotel_booking_app/features/authentication/view/signup/verify_account.dart';
 import 'package:hotel_booking_app/features/hotel/view/carbooking/assigned_driver.dart';
 import 'package:hotel_booking_app/features/hotel/view/carbooking/book_a_car.dart';
+import 'package:hotel_booking_app/features/hotel/view/carbooking/booking_history.dart';
 import 'package:hotel_booking_app/features/hotel/view/carbooking/car_detail_and_price.dart';
+import 'package:hotel_booking_app/features/hotel/view/carbooking/booking_details.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/book_now.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/foodmenu/food_detail.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/foodmenu/food_menu.dart';
@@ -58,6 +60,8 @@ class AppRoutes {
   static const String bookACar = 'BookACar';
   static const String carDetail = 'CarDetail';
   static const String assignedDriver = 'AssignedDriver';
+  static const String bookingHistory = 'BookingHistory';
+  static const String bookingDetails = 'BookingDetails';
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -145,6 +149,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
       case AppRoutes.assignedDriver:
       return _buildAnimatedRoute(const AssignedDriver());
+
+      case AppRoutes.bookingHistory:
+      return _buildAnimatedRoute(const BookingHistory());
+
+      case AppRoutes.bookingDetails:
+      return _buildAnimatedRoute(const BookingDetails());
 
     default:
       return _buildAnimatedRoute(
