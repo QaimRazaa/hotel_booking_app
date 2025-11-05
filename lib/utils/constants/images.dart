@@ -28,6 +28,8 @@ class AppImages {
   static const String moreIcon = "assets/images/icons/moreicon.png";
   static const String bedIcon = "assets/images/icons/bed.png";
   static const String pencilIcon = "assets/images/icons/pencil.png";
+  static const String okayIcon = "assets/images/icons/okayicon.png";
+  static const String cancelIcon = "assets/images/icons/cancel.png";
 
 
   static const String breakfastIconTwo = "assets/images/icons/food/breakfast.png";

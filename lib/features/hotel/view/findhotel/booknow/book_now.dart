@@ -42,7 +42,7 @@ class _BookNowScreenState extends State<BookNowScreen> {
                       rating: 8.9,
                       height: 300,
                       actionIcon: Icons.share,
-                      onActionPressed: () {},
+                      onActionPressed: () {Navigator.pushNamed(context, AppRoutes.findHotelScreen);},
                     ),
                     // TabBar
                     Padding(

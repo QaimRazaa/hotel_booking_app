@@ -4,16 +4,20 @@ import 'package:hotel_booking_app/features/authentication/view/forgot_password/f
 import 'package:hotel_booking_app/features/authentication/view/signin/sign_in.dart';
 import 'package:hotel_booking_app/features/authentication/view/signup/signup.dart';
 import 'package:hotel_booking_app/features/authentication/view/signup/verify_account.dart';
+import 'package:hotel_booking_app/features/hotel/view/carbooking/assigned_driver.dart';
+import 'package:hotel_booking_app/features/hotel/view/carbooking/book_a_car.dart';
+import 'package:hotel_booking_app/features/hotel/view/carbooking/car_detail_and_price.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/book_now.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/foodmenu/food_detail.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/foodmenu/food_menu.dart';
+import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/foodmenu/food_cart.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/findhotel.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/hotellocation/hotel_location.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/order_confirm.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/order_succesful.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/redeem_voucher.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/paymentmethod/payment_method.dart';
-import 'package:hotel_booking_app/features/hotel/view/rooms/rooms.dart';
+import 'package:hotel_booking_app/features/hotel/view/rooms/find_room.dart';
 import 'package:hotel_booking_app/features/personalisation/view/changepassword/change_password.dart';
 import 'package:hotel_booking_app/features/personalisation/view/myprofile/add_a_card.dart';
 import 'package:hotel_booking_app/features/personalisation/view/myprofile/edit_profile.dart';
@@ -49,7 +53,11 @@ class AppRoutes {
   static const String faq = 'Faq';
   static const String foodMenu = 'FoodMenu';
   static const String foodDetail = 'FoodDetail';
+  static const String foodCart = 'FoodCart';
   static const String notifications = 'Notifications';
+  static const String bookACar = 'BookACar';
+  static const String carDetail = 'CarDetail';
+  static const String assignedDriver = 'AssignedDriver';
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -125,6 +133,18 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
       case AppRoutes.foodDetail:
       return _buildAnimatedRoute(const FoodDetail());
+
+      case AppRoutes.foodCart:
+      return _buildAnimatedRoute(const FoodCart());
+
+      case AppRoutes.bookACar:
+      return _buildAnimatedRoute(const BookACar());
+
+      case AppRoutes.carDetail:
+      return _buildAnimatedRoute(const CarDetailAndPrice());
+
+      case AppRoutes.assignedDriver:
+      return _buildAnimatedRoute(const AssignedDriver());
 
     default:
       return _buildAnimatedRoute(

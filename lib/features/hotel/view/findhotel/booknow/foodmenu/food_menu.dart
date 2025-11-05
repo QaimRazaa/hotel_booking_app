@@ -25,9 +25,7 @@ class _FoodMenuState extends State<FoodMenu> {
         child: Column(
           children: [
             CustomAppBar(
-              onBackPressed: () {
-                Navigator.pushNamed(context, AppRoutes.bookNowScreen);
-              },
+              onBackPressed: () {Navigator.pop(context);},
               title: 'Food',
               showBackArrow: true,
               showActions: false,
@@ -97,7 +95,9 @@ class _FoodMenuState extends State<FoodMenu> {
         subtitle: 'Total price : \$15',
         gradient: AppColors.linerGradient3,
         buttonText: 'Add',
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, AppRoutes.foodCart);
+        },
       ),
     );
   }

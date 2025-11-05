@@ -5,6 +5,8 @@ import 'package:hotel_booking_app/utils/constants/colors.dart';
 class CustomTextField extends StatelessWidget {
   final String hintText;
   final IconData? prefixIcon;
+  final IconData? postfixIcon; // 👈 added
+  final VoidCallback? onPostfixTap; // 👈 added
   final bool obscureText;
   final bool underLine;
   final TextEditingController? controller;
@@ -15,13 +17,16 @@ class CustomTextField extends StatelessWidget {
   final FontWeight fontWeight;
   final Color textColor;
   final Color hintTextColor;
-  final Color? underlineColor; // 👈 added
-  final Color? focusedUnderlineColor; // 👈 added
+  final Color? underlineColor;
+  final Color? focusedUnderlineColor;
+  final Color? postfixIconColor; // 👈 added
 
   const CustomTextField({
     super.key,
     required this.hintText,
     this.prefixIcon,
+    this.postfixIcon, // 👈 added
+    this.onPostfixTap, // 👈 added
     this.obscureText = false,
     this.underLine = true,
     this.controller,
@@ -32,8 +37,9 @@ class CustomTextField extends StatelessWidget {
     this.fontWeight = FontWeight.normal,
     this.textColor = Colors.black,
     this.hintTextColor = Colors.grey,
-    this.underlineColor, // 👈 optional parameter
-    this.focusedUnderlineColor, // 👈 optional parameter
+    this.underlineColor,
+    this.focusedUnderlineColor,
+    this.postfixIconColor, // 👈 added
   });
 
   @override
@@ -55,6 +61,15 @@ class CustomTextField extends StatelessWidget {
           counterText: '',
           prefixIcon: prefixIcon != null
               ? Icon(prefixIcon, color: AppColors.primary)
+              : null,
+          suffixIcon: postfixIcon != null
+              ? GestureDetector(
+            onTap: onPostfixTap,
+            child: Icon(
+              postfixIcon,
+              color: postfixIconColor ?? AppColors.primary,
+            ),
+          )
               : null,
           hintText: hintText,
           hintStyle: GoogleFonts.roboto(

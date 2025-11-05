@@ -28,7 +28,7 @@ class BottomNavBar extends StatelessWidget {
           _NavItem(
             icon: CupertinoIcons.car,
             label: 'Car booking',
-            onTap: () {},
+            onTap: () {Navigator.pushNamed(context, AppRoutes.bookACar);},
           ),
           _NavItem(
             icon: CupertinoIcons.car_detailed,
