@@ -6,9 +6,9 @@ import 'package:hotel_booking_app/features/authentication/view/signup/signup.dar
 import 'package:hotel_booking_app/features/authentication/view/signup/verify_account.dart';
 import 'package:hotel_booking_app/features/hotel/view/carbooking/assigned_driver.dart';
 import 'package:hotel_booking_app/features/hotel/view/carbooking/book_a_car.dart';
-import 'package:hotel_booking_app/features/hotel/view/carbooking/booking_history.dart';
+import 'package:hotel_booking_app/features/hotel/view/carbooking/car_booking_history.dart';
 import 'package:hotel_booking_app/features/hotel/view/carbooking/car_detail_and_price.dart';
-import 'package:hotel_booking_app/features/hotel/view/carbooking/booking_details.dart';
+import 'package:hotel_booking_app/features/hotel/view/carbooking/car_booking_details.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/book_now.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/foodmenu/food_detail.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/booknow/foodmenu/food_menu.dart';
@@ -20,6 +20,8 @@ import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/ord
 import 'package:hotel_booking_app/features/hotel/view/findhotel/orderconfirm/redeem_voucher.dart';
 import 'package:hotel_booking_app/features/hotel/view/findhotel/paymentmethod/payment_method.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/find_room.dart';
+import 'package:hotel_booking_app/features/personalisation/view/bookinghistory/hotel_booking_details.dart';
+import 'package:hotel_booking_app/features/personalisation/view/bookinghistory/hotel_booking_history.dart';
 import 'package:hotel_booking_app/features/personalisation/view/changepassword/change_password.dart';
 import 'package:hotel_booking_app/features/personalisation/view/myprofile/add_a_card.dart';
 import 'package:hotel_booking_app/features/personalisation/view/myprofile/edit_profile.dart';
@@ -62,6 +64,8 @@ class AppRoutes {
   static const String assignedDriver = 'AssignedDriver';
   static const String bookingHistory = 'BookingHistory';
   static const String bookingDetails = 'BookingDetails';
+  static const String hotelBookingHistory = 'HotelBookingHistory';
+  static const String hotelBookingDetails = 'HotelBookingDetails';
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -155,6 +159,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
       case AppRoutes.bookingDetails:
       return _buildAnimatedRoute(const BookingDetails());
+
+      case AppRoutes.hotelBookingHistory:
+      return _buildAnimatedRoute(const HotelBookingHistory());
+
+      case AppRoutes.hotelBookingDetails:
+      return _buildAnimatedRoute(const HotelBookingDetails());
 
     default:
       return _buildAnimatedRoute(

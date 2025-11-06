@@ -21,73 +21,75 @@ class _FoodMenuState extends State<FoodMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            CustomAppBar(
-              onBackPressed: () {Navigator.pop(context);},
-              title: 'Food',
-              showBackArrow: true,
-              showActions: false,
-            ),
-            Padding(
-              padding: AppSizes.paddingSymmetric(horizontal: 6),
-              child: Column(
-                children: [
-                  FoodCategories(),
-                  HotelCard(
-                    imageUrl: AppImages.foodOne,
-                    buttonText: 'Add',
-                    title: 'Bagels with turkey and bacon',
-                    rating: 3.9,
-                    reviewCount: 200,
-                    description: 'neque, amet blandit tincidunt vulputate ',
-                    discount: '25% OFF',
-                    price: 34,
-                    onBookPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.foodDetail);
-                    },
-                  ),
-                  Divider(color: AppColors.lightWhite),
-                  HotelCard(
-                    imageUrl: AppImages.foodTwo,
-                    title: 'gourmet croissant, scrambled eggs..',
-                    buttonText: 'Add',
-                    rating: 3.9,
-                    reviewCount: 200,
-                    description: 'neque, amet blandit tincidunt vulputate ',
-                    discount: '15% OFF',
-                    price: 12,
-                    onBookPressed: () {},
-                  ),
-                  Divider(color: AppColors.lightWhite),
-                  HotelCard(
-                    imageUrl: AppImages.foodThree,
-                    title: 'sandwich',
-                    buttonText: 'Add',
-                    rating: 3.9,
-                    reviewCount: 200,
-                    description: 'neque, amet blandit tincidunt vulputate ',
-                    discount: '10% OFF',
-                    price: 22,
-                    onBookPressed: () {},
-                  ),
-                  Divider(color: AppColors.lightWhite),
-                  HotelCard(
-                    imageUrl: AppImages.foodFour,
-                    title: 'crispy mozza burger',
-                    buttonText: 'Add',
-                    rating: 3.9,
-                    reviewCount: 200,
-                    description: 'neque, amet blandit tincidunt vulputate ',
-                    discount: '25% OFF',
-                    price: 54,
-                    onBookPressed: () {},
-                  ),
-                ],
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            children: [
+              CustomAppBar(
+                onBackPressed: () {Navigator.pop(context);},
+                title: 'Food',
+                showBackArrow: true,
+                showActions: false,
               ),
-            ),
-          ],
+              Padding(
+                padding: AppSizes.paddingSymmetric(horizontal: 6),
+                child: Column(
+                  children: [
+                    FoodCategories(),
+                    HotelCard(
+                      imageUrl: AppImages.foodOne,
+                      buttonText: 'Add',
+                      title: 'Bagels with turkey and bacon',
+                      rating: 3.9,
+                      reviewCount: 200,
+                      description: 'neque, amet blandit tincidunt vulputate ',
+                      discount: '25% OFF',
+                      price: 34,
+                      onBookPressed: () {
+                        Navigator.pushNamed(context, AppRoutes.foodDetail);
+                      },
+                    ),
+                    Divider(color: AppColors.lightWhite),
+                    HotelCard(
+                      imageUrl: AppImages.foodTwo,
+                      title: 'gourmet croissant, scrambled eggs..',
+                      buttonText: 'Add',
+                      rating: 3.9,
+                      reviewCount: 200,
+                      description: 'neque, amet blandit tincidunt vulputate ',
+                      discount: '15% OFF',
+                      price: 12,
+                      onBookPressed: () {},
+                    ),
+                    Divider(color: AppColors.lightWhite),
+                    HotelCard(
+                      imageUrl: AppImages.foodThree,
+                      title: 'sandwich',
+                      buttonText: 'Add',
+                      rating: 3.9,
+                      reviewCount: 200,
+                      description: 'neque, amet blandit tincidunt vulputate ',
+                      discount: '10% OFF',
+                      price: 22,
+                      onBookPressed: () {},
+                    ),
+                    Divider(color: AppColors.lightWhite),
+                    HotelCard(
+                      imageUrl: AppImages.foodFour,
+                      title: 'crispy mozza burger',
+                      buttonText: 'Add',
+                      rating: 3.9,
+                      reviewCount: 200,
+                      description: 'neque, amet blandit tincidunt vulputate ',
+                      discount: '25% OFF',
+                      price: 54,
+                      onBookPressed: () {},
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: FoodNavBar(

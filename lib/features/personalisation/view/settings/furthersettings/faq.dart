@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/device/device_utils.dart';
 import '../../../../hotel/view/rooms/widgets/appbar.dart';
 import '../widgets/settings_tile.dart';
@@ -15,6 +16,7 @@ class _FaqState extends State<Faq> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(

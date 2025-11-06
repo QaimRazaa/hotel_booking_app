@@ -74,12 +74,10 @@ class _SignupScreenState extends State<SignupScreen> {
 
                             SizedBox(
                               width: double.infinity,
-                              height: AppSizes.height(5.2),
                               child: CustomElevatedButton(
                                 text: AppTexts.createAccount,
                                 gradient: AppColors.linerGradient2,
                                 textColor: Colors.white,
-                                fontSize: AppSizes.font(2),
                                 onPressed: () {
                                   Navigator.pushNamed(
                                     context,

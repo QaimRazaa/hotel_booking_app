@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/utils/constants/colors.dart';
 
 import '../../../../../utils/device/device_utils.dart';
 import '../../../../hotel/view/rooms/widgets/appbar.dart';
@@ -15,6 +16,7 @@ class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SingleChildScrollView(
         child: SafeArea(child: Column(
           children: [

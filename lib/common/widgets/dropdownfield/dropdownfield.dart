@@ -33,7 +33,6 @@ class CustomDropdownField extends StatelessWidget {
               color: Colors.grey,
               size: AppSizes.icon(3),
             ),
-            itemHeight: AppSizes.height(6.5),
             menuMaxHeight: AppSizes.height(25),
 
             hint: Row(

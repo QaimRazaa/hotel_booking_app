@@ -128,10 +128,8 @@ class _CancelCabDialogState extends State<CancelCabDialog> {
               text: 'Submit',
               gradient: AppColors.linerGradient3,
               textColor: Colors.white,
-              fontSize: AppSizes.font(2),
               borderRadius: AppSizes.radius(2),
               width: double.infinity,
-              height: AppSizes.height(5),
               onPressed: () {
                 Navigator.pushNamed(context, AppRoutes.bookACar);
               },

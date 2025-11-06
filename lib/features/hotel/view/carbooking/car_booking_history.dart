@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hotel_booking_app/core/routes.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/appbar.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/tabbar.dart';
+import 'package:hotel_booking_app/utils/constants/colors.dart';
 import 'package:hotel_booking_app/utils/device/device_utils.dart';
 
 import '../../../personalisation/view/settings/widgets/settings_tile.dart';
@@ -17,6 +18,7 @@ class _BookingHistoryState extends State<BookingHistory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(

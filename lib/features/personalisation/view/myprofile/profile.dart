@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking_app/core/routes.dart';
 import 'package:hotel_booking_app/features/hotel/view/rooms/widgets/navbar.dart';
+import 'package:hotel_booking_app/features/personalisation/view/myprofile/widgets/profile_menu_button.dart';
 import 'package:hotel_booking_app/utils/constants/text_style.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/images.dart';
@@ -115,32 +116,11 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
             ),
           ),
 
-          Positioned(
-            top: AppSizes.height(5),
-            right: AppSizes.width(4),
-            child: PopupMenuButton<String>(
-              icon: const Icon(Icons.more_vert, color: AppColors.primary),
-              color: AppColors.primary,
-              borderRadius: BorderRadius.circular(12),
-              onSelected: (value) {
-                if (value == 'password') {
-                  Navigator.pushNamed(context, AppRoutes.changePasswordScreen);
-                }
-              },
-              itemBuilder: (context) => [
-                PopupMenuItem<String>(
-                  value: 'password',
-                  child:  Text(
-                    'Change Password',
-                    style: AppTextStyles.buttonText().copyWith(color: AppColors.white)
-                  ),
-                ),
-              ],
-            ),
-          ),
+          ProfileMenuButton(),
         ],
       ),
       bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
+

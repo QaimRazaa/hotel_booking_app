@@ -18,7 +18,6 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
-    AppSizes.init(context);
 
     return Scaffold(
       body: Container(
@@ -82,12 +81,10 @@ class _SignInScreenState extends State<SignInScreen> {
 
                               SizedBox(
                                 width: double.infinity,
-                                height: AppSizes.height(5.2),
                                 child: CustomElevatedButton(
                                   text: AppTexts.signIn,
                                   gradient: AppColors.linerGradient2,
                                   textColor: Colors.white,
-                                  fontSize: AppSizes.font(2),
                                   onPressed: () {
                                     Navigator.pushNamed(
                                       context,
